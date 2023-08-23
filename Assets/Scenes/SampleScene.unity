@@ -414,7 +414,7 @@ MonoBehaviour:
   scrollingSpeed: 9
   forceMagnitude: 600
   maxVelocity: 10
-  dontMoveifTouchclose: 0.1
+  dontMoveifTouchclose: 0.2
 --- !u!70 &720887301
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
