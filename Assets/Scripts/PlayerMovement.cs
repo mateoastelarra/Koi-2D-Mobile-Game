@@ -45,15 +45,7 @@ public class PlayerMovement : MonoBehaviour
             lastTouch = touchPos;
 
             movementDirection = worldPos - new Vector2(transform.position.x, transform.position.y);
-            //movementDirection.z = 0;
-            if (movementDirection.sqrMagnitude < dontMoveifTouchclose)
-            {
-                movementDirection = Vector2.zero;
-            }
-            else
-            {
-                movementDirection.Normalize();
-            }
+            movementDirection.Normalize();
         }
         else
         {
