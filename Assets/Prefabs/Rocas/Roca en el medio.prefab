@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9841213660e0a408cf49fbd2a5cc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velicidadMinima: 2
-  velocidadMaxima: 2
+  velocidad: 2
+  numObstaculo: 1
 --- !u!50 &6654644596229201232
 Rigidbody2D:
   serializedVersion: 4

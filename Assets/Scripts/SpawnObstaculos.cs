@@ -14,6 +14,7 @@ public class SpawnObstaculos : MonoBehaviour
     [SerializeField] private  GameObject piedraRandom;
     [SerializeField] private  GameObject piedraDoble;
     [SerializeField] private  GameObject piedraMedio;
+    [SerializeField] private  GameObject rama;
 
 
 
@@ -25,13 +26,14 @@ public class SpawnObstaculos : MonoBehaviour
 
 
     private  Vector2 spawnPosition;
-    private  GameObject PiedraElegida;
+    private  GameObject obstaculoElegido;
     private  float tiempoPasado;
     private  float TiempoParaSpawn;
 
     private Transform camTransform;
     private float camYPosition;
-    private int numAnt,randomNumParaPiedra;
+    private int numAnt;
+    public int randomNumParaPiedra;
     void Start()
     {
         // Obtener el transform de la cámara
@@ -58,34 +60,42 @@ public class SpawnObstaculos : MonoBehaviour
     {
         tiempoPasado = 0;
   
-         randomNumParaPiedra = Random.Range(1, 4); // aca va (1, numero de obstaculos +1)
+         randomNumParaPiedra = Random.Range(1, 6); // aca va (1, numero de obstaculos +1)
         if (numAnt ==  randomNumParaPiedra){
             // esto es para que no salgan muchas veces seguidas el de la piedra del medio o el de las dos pidras por que queda medio mal
-             randomNumParaPiedra = Random.Range(1, 4);
+             randomNumParaPiedra = Random.Range(1, 6);
         }
         switch (randomNumParaPiedra)
         {
            
             case 1:
-                PiedraElegida = piedraRandom.gameObject;
+                obstaculoElegido = piedraRandom.gameObject;
                 spawnPosition = new Vector2( Random.Range(limiteXizquierdo, limiteXderecho),posicionYparaObstaculos + camYPosition);
                 break;
             case 2:
-                PiedraElegida = piedraDoble.gameObject;
+                obstaculoElegido = piedraDoble.gameObject;
                 spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
                 break;
             case 3:
-                PiedraElegida = piedraMedio.gameObject;
+                obstaculoElegido = piedraMedio.gameObject;
                 spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
                 break;
-            
+             case 4:
+                obstaculoElegido = rama.gameObject;
+                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
+                break;    
+             case 5:
+                obstaculoElegido = rama.gameObject;
+                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
+                break; 
+                     
         }
 
         numAnt =  randomNumParaPiedra;
 
         //Instanciar
 
-         GameObject nuevoObstaculo = Instantiate(PiedraElegida, spawnPosition, Quaternion.identity);
+         GameObject nuevoObstaculo = Instantiate(obstaculoElegido, spawnPosition, Quaternion.identity);
     
         // Establecer el objeto padre
         nuevoObstaculo.transform.SetParent(transform);
