@@ -61,7 +61,7 @@ public class VidaPlayer : MonoBehaviour
             puntosDeVida -=1;
             if (puntosDeVida == 0)
             {
-                ReiniciarEscena();
+                StartCoroutine("VolverAlMenuPrincipal");
             }
             }
         } 
@@ -110,5 +110,14 @@ public class VidaPlayer : MonoBehaviour
         // Cargamos la misma escena para reiniciarla
         SceneManager.LoadScene(nombreEscenaActual);
     
+    }
+
+    public IEnumerator VolverAlMenuPrincipal()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
     }
 }
