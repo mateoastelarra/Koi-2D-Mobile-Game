@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 720887302}
   - component: {fileID: 720887301}
   - component: {fileID: 720887303}
+  - component: {fileID: 720887304}
   m_Layer: 0
   m_Name: Koi (Player)
   m_TagString: Untagged
@@ -591,7 +592,8 @@ MonoBehaviour:
   scrollingSpeed: 9
   forceMagnitude: 600
   maxVelocity: 10
-  dontMoveifTouchclose: 0.2
+  dontMoveifTouchclose: 0.6
+  speed: 3
 --- !u!70 &720887301
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -649,6 +651,36 @@ MonoBehaviour:
   tiempoInmune: 1
   tiempoEntreBlinks: 0.1
   inmune: 0
+--- !u!114 &720887304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720887298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6830a97dcf476474d9a4b064a729d002, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &749499218
 GameObject:
   m_ObjectHideFlags: 0

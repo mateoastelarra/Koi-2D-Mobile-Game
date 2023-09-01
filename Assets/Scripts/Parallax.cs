@@ -8,14 +8,14 @@ public class Parallax : MonoBehaviour
     public Camera mainCamera;
     public float parallaxEffect;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         startPosition = transform.position.y;
         length = GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         float relativePos = mainCamera.transform.position.y * (1 - parallaxEffect);
