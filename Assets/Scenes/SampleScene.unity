@@ -589,11 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd8d4ec388005c459d52ae27e564b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 9
-  forceMagnitude: 10
-  maxVelocity: 10
-  dontMoveifTouchclose: 0.6
-  speed: 3
+  scrollingSpeed: 10
+  speed: 5
 --- !u!70 &720887301
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
