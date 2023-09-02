@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
+  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -898,6 +898,7 @@ GameObject:
   - component: {fileID: 720887302}
   - component: {fileID: 720887301}
   - component: {fileID: 720887303}
+  - component: {fileID: 720887304}
   m_Layer: 0
   m_Name: Koi (Player)
   m_TagString: Untagged
@@ -933,9 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingSpeed: 9
-  forceMagnitude: 600
-  maxVelocity: 10
-  dontMoveifTouchclose: 0.2
+  speed: 10
 --- !u!70 &720887301
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -998,6 +997,45 @@ MonoBehaviour:
   vida3: {fileID: 1958368024}
   vida4: {fileID: 608507442}
   vida5: {fileID: 686523162}
+--- !u!114 &720887304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720887298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6830a97dcf476474d9a4b064a729d002, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb568b22-e839-4d04-9b01-621c73c79a97
+    m_ActionName: Player/Move[/Device Simulator Touchscreen/position,/Simulated Touchscreen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b17d659f-568f-4420-bbcf-8b7bd4a717ed
+    m_ActionName: Player/DecideWhereToGo[/Device Simulator Touchscreen/touch0/press,/Simulated
+      Touchscreen/touch0/press]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &749499218
 GameObject:
   m_ObjectHideFlags: 0
