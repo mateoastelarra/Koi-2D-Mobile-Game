@@ -97,7 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9841213660e0a408cf49fbd2a5cc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 2
+  velocidad1: 2
+  velocidad2: 3
+  velocidad3: 4
+  cronometro: 0
+  tiempoTotalVar: 120
+  barra: {fileID: 0}
   numObstaculo: 1
 --- !u!50 &6395868495331204663
 Rigidbody2D:
