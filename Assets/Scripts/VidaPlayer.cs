@@ -63,10 +63,11 @@ public class VidaPlayer : MonoBehaviour
             timer = 0;
 
             puntosDeVida -=1;
-            if (puntosDeVida == 0)
-            {
-                ReiniciarEscena();
-            }
+                if (puntosDeVida == 0)
+                {
+                    //ReiniciarEscena();
+                    StartCoroutine("VolverAlMenuPrincipal");
+                }
             }
         } 
 
@@ -102,6 +103,7 @@ public class VidaPlayer : MonoBehaviour
             spriteRenderer.material = originalMaterial;
         }
     }
+
     public void ReiniciarEscena()
     {
         Debug.Log("reinciar");
@@ -112,6 +114,16 @@ public class VidaPlayer : MonoBehaviour
         SceneManager.LoadScene(nombreEscenaActual);
     
     }
+
+    public IEnumerator VolverAlMenuPrincipal()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
+    }
+
     public void AtualizarImagenDeVida()
     {
         switch (puntosDeVida)
