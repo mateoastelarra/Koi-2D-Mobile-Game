@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public void Start()
+    {
+        PlayerPrefs.SetInt("Progress", 0);
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(1);

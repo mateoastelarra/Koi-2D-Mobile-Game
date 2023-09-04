@@ -39,7 +39,23 @@ public class PezDeBarraDeProgreso : MonoBehaviour
           //  cronometro = 0.0f;
           //  barraAzul.transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
                 SceneManager.LoadScene("Victoria");
+                PlayerPrefs.SetInt("Progress", 3);
 
+        }
+        else if (cronometro >= 2 * tiempoTotalVar / 3f)
+        {
+            Debug.Log("hola");
+            if (PlayerPrefs.GetInt("Progress") < 2)
+            {
+                PlayerPrefs.SetInt("Progress", 2);
+            }
+        }
+        else if (cronometro >=  tiempoTotalVar / 3f)
+        {
+            if (PlayerPrefs.GetInt("Progress") < 1)
+            {
+                PlayerPrefs.SetInt("Progress", 1);
+            }
         }
     }
     public float devolverCronometro(){
