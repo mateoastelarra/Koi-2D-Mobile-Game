@@ -17,8 +17,12 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] private float tiempoInmune;
     [SerializeField] private float tiempoEntreBlinks;
     [SerializeField] private bool inmune;
-
-//    [SerializeField] private float tiempoInmune;
+    [Header("Imagenes de vida de koi")]
+    [SerializeField] private GameObject vida1;
+    [SerializeField] private GameObject vida2;
+    [SerializeField] private GameObject vida3;
+    [SerializeField] private GameObject vida4;
+    [SerializeField] private GameObject vida5;
 
 
 
@@ -43,8 +47,8 @@ public class VidaPlayer : MonoBehaviour
             inmune = false;
         }
         Blink();
-         textoUIvida.text = puntosDeVida.ToString();
-   
+         //textoUIvida.text = puntosDeVida.ToString();
+   AtualizarImagenDeVida();
     }
 
 
@@ -59,17 +63,15 @@ public class VidaPlayer : MonoBehaviour
             timer = 0;
 
             puntosDeVida -=1;
-            if (puntosDeVida == 0)
-            {
-                StartCoroutine("VolverAlMenuPrincipal");
-            }
+                if (puntosDeVida == 0)
+                {
+                    //ReiniciarEscena();
+                    StartCoroutine("VolverAlMenuPrincipal");
+                }
             }
         } 
 
     }
-
-
-    //comenzamos con lo del blink...
 
 
       private void Blink()
@@ -101,6 +103,7 @@ public class VidaPlayer : MonoBehaviour
             spriteRenderer.material = originalMaterial;
         }
     }
+
     public void ReiniciarEscena()
     {
         Debug.Log("reinciar");
@@ -119,5 +122,72 @@ public class VidaPlayer : MonoBehaviour
         GetComponent<CapsuleCollider2D>().enabled = false;
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(0);
+    }
+
+    public void AtualizarImagenDeVida()
+    {
+        switch (puntosDeVida)
+        {
+        case 0:
+            vida1.SetActive(false); 
+            vida2.SetActive(false); 
+            vida3.SetActive(false); 
+            vida4.SetActive(false); 
+            vida5.SetActive(false); 
+
+            break;
+
+        case 1:
+            vida1.SetActive(true); 
+            vida2.SetActive(false); 
+            vida3.SetActive(false); 
+            vida4.SetActive(false); 
+            vida5.SetActive(false); 
+
+            break;
+
+           
+        case 2:
+            vida1.SetActive(true); 
+            vida2.SetActive(true); 
+            vida3.SetActive(false); 
+            vida4.SetActive(false); 
+            vida5.SetActive(false); 
+
+            break;
+
+           
+        case 3:
+            vida1.SetActive(true); 
+            vida2.SetActive(true); 
+            vida3.SetActive(true); 
+            vida4.SetActive(false); 
+            vida5.SetActive(false); 
+
+            break;
+
+           
+         case 4:
+            vida1.SetActive(true); 
+            vida2.SetActive(true); 
+            vida3.SetActive(true); 
+            vida4.SetActive(true); 
+            vida5.SetActive(false); 
+
+            break;
+
+           
+        case 5:
+            vida1.SetActive(true); 
+            vida2.SetActive(true); 
+            vida3.SetActive(true); 
+            vida4.SetActive(true); 
+            vida5.SetActive(true); 
+
+            break;
+
+
+}
+
     }
 }
