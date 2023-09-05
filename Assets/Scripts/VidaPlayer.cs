@@ -47,7 +47,7 @@ public class VidaPlayer : MonoBehaviour
             inmune = false;
         }
         Blink();
-         textoUIvida.text = puntosDeVida.ToString();
+         //textoUIvida.text = puntosDeVida.ToString();
    AtualizarImagenDeVida();
     }
 
