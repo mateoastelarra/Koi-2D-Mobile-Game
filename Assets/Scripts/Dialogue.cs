@@ -10,11 +10,6 @@ public class Dialogue : MonoBehaviour
 
     private int index;
 
-    void Start()
-    {
-
-    }
-
     private void OnEnable()
     {
         textComponent.text = string.Empty;
@@ -29,7 +24,7 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (textComponent.text == lines[index])
             {
