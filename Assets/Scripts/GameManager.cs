@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public void Start()
+    {
+        //PlayerPrefs.SetInt("Progress", 0);
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
@@ -11,6 +15,11 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void GoToLegendScene()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void Quit()
