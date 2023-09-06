@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpawnObjetsPreset1
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 4133dc366a1cab9459e04b7ed3679114, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: TiempoParaSpawnMin
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: TiempoParaSpawnMax
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: piedraRandom
+    value: 
+    objectReference: {fileID: 6395868495331204657, guid: 811b47013b748cb43ab60bbd87131a2f, type: 3}
+  - target: {fileID: 0}
+    propertyPath: piedraDoble
+    value: 
+    objectReference: {fileID: 567200386630203239, guid: 3c4c58782a666d7448001c1d28424f8e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: piedraMedio
+    value: 
+    objectReference: {fileID: 1550136236484372178, guid: 1faf29573f2c41d46b537195498696db, type: 3}
+  - target: {fileID: 0}
+    propertyPath: posicionYparaObstaculos
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: limiteXizquierdo
+    value: -1.17
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: limiteXderecho
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawnPosition.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawnPosition.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: PiedraElegida
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiempoPasado
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: TiempoParaSpawn
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
