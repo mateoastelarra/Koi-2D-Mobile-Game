@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1550136236484372178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.79, z: 10}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: -0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 94cf9df071ad23342b9d3e867fee33f2, type: 3}
+  m_Sprite: {fileID: -9094762467548615763, guid: 5fd387c6ab6e93b4c9cb227bb4f1ff54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 99.21768, y: 70.15}
+  m_Size: {x: 14.173529, y: 10.022858}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,9 +100,7 @@ MonoBehaviour:
   velocidad1: 2
   velocidad2: 3
   velocidad3: 4
-  cronometro: 0
   tiempoTotalVar: 120
-  barra: {fileID: 0}
   numObstaculo: 1
 --- !u!50 &6654644596229201232
 Rigidbody2D:
@@ -138,6 +136,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16975927, y: 0.96000004}
+  m_Offset: {x: 0.037911877, y: 0.014525312}
   serializedVersion: 2
-  m_Radius: 0.5505812
+  m_Radius: 0.76592296
