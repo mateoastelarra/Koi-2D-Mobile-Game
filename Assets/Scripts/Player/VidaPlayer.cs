@@ -24,6 +24,9 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] private GameObject vida4;
     [SerializeField] private GameObject vida5;
 
+    public int PuntosDeVida { get => puntosDeVida; set => puntosDeVida = value; }
+    public bool Inmune { get => inmune; set => inmune = value; }
+
 
 
     // Start is called before the first frame update
@@ -37,33 +40,36 @@ public class VidaPlayer : MonoBehaviour
     void Update()
     {
         timerBlink += Time.deltaTime;
+        /*
         timer += Time.deltaTime;
         if (timer < tiempoInmune)
         {
-            inmune = true;
+            Inmune = true;
         }
         else
         {
-            inmune = false;
+            Inmune = false;
         }
+        */
         Blink();
          //textoUIvida.text = puntosDeVida.ToString();
-   AtualizarImagenDeVida();
+        AtualizarImagenDeVida();
     }
 
 
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         
         if (other.CompareTag("Obstaculo"))
         {
-            if (inmune == false)
+            if (Inmune == false)
             {
-            //es el timer para el blink
-            timer = 0;
+                //es el timer para el blink
+                //timer = 0;
+                StartCoroutine(BeInmune());
 
-            puntosDeVida -=1;
-                if (puntosDeVida == 0)
+                PuntosDeVida -=1;
+                if (PuntosDeVida == 0)
                 {
                     //ReiniciarEscena();
                     StartCoroutine("VolverAlMenuPrincipal");
@@ -78,7 +84,7 @@ public class VidaPlayer : MonoBehaviour
     {
         
 
-        if (inmune)
+        if (Inmune)
         {
             if (timerBlink >= tiempoEntreBlinks)
             {
@@ -124,9 +130,18 @@ public class VidaPlayer : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private IEnumerator BeInmune()
+    {
+        inmune = true;
+
+        yield return new WaitForSeconds(tiempoInmune);
+
+        inmune = false;
+    }
+
     public void AtualizarImagenDeVida()
     {
-        switch (puntosDeVida)
+        switch (PuntosDeVida)
         {
         case 0:
             vida1.SetActive(false); 
@@ -187,7 +202,9 @@ public class VidaPlayer : MonoBehaviour
             break;
 
 
-}
+        }
 
     }
+
+    
 }
