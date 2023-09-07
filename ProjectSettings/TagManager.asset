@@ -6,6 +6,8 @@ TagManager:
   tags:
   - RompeObstaculos
   - Obstaculo
+  - LifeUp
+  - Shield
   layers:
   - Default
   - TransparentFX
