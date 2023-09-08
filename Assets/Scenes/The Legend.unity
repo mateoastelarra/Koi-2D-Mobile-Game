@@ -221,7 +221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &115954355
 AudioSource:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "El Desaf\xEDo"
+  m_text: El Desafio
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7123bc99423b90c49905c97fee648d66, type: 2}
   m_sharedMaterial: {fileID: 1880738652484594953, guid: 7123bc99423b90c49905c97fee648d66, type: 2}
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 144
+  m_fontSize: 137.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1798,10 +1798,10 @@ MonoBehaviour:
   - {fileID: 289585012}
   - {fileID: 1174118419}
   chapterNames:
-  - "El Desaf\xEDo"
+  - El Desafio
   - El viaje
   - La gran cascada
-  - "El drag\xF3n"
+  - El dragon
   chapterName: {fileID: 147849284}
 --- !u!1 &904824052
 GameObject:
@@ -2170,13 +2170,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1678892812}
   lines:
-  - "Pero eso no desanim\xF3 a los valientes Koi."
-  - "Continuaron intentando durante d\xEDas, meses, a\xF1os\u2026"
+  - Pero eso no desanimo a los valientes Koi.
+  - "Continuaron intentando durante dias, meses, a\xF1os\u2026"
   - 'Hasta que, finalmente, uno dio un salto tan alto, '
-  - "que consigui\xF3 cruzar al otro lado de la cascada."
+  - que consiguio cruzar al otro lado de la cascada.
   - "Los dioses, que estaban en el cielo, al ver la perseverancia del peque\xF1o
     Koi"
-  - "decidieron transformarlo en un hermoso drag\xF3n dorado,"
+  - decidieron transformarlo en un hermoso dragon dorado,
   - "libre de volar por sobre cualquier obst\xE1culo que se interponga en su camino."
   textSpeed: 0.05
 --- !u!114 &1018921248
@@ -2972,11 +2972,11 @@ MonoBehaviour:
   lines:
   - Cuando llegaron a la cascada y vieron su altura,
   - muchos Koi se desanimaron y se dejaron arrastrar por la corriente.
-  - "Un grupo de demonios que pasaba por la orilla del r\xEDo se detuvo a ver los
-    fallidos intentos de los peces."
+  - Un grupo de demonios que pasaba por la orilla del rio se detuvo a ver los fallidos
+    intentos de los peces.
   - Tal fue la gracia que esto les hizo,
-  - "que decidieron lanzar un hechizo sobre la cascada para divertirse a\xFAn m\xE1s, "
-  - "y esta se elev\xF3 hasta el mismo cielo\u2026"
+  - 'que decidieron lanzar un hechizo sobre la cascada para divertirse aun mas, '
+  - "y esta se elevo hasta el mismo cielo\u2026"
   textSpeed: 0.05
 --- !u!114 &1300903068
 MonoBehaviour:
@@ -3450,11 +3450,11 @@ MonoBehaviour:
   textComponent: {fileID: 1819644544}
   lines:
   - 'Miles de peces koi decidieron nadar contra la corriente. '
-  - "Eran tantos, que el r\xEDo resplandec\xEDa por el brillo de sus escamas.  "
-  - "Nadaban incansablemente, sorteando los obst\xE1culos y peligros del camino, "
+  - 'Eran tantos, que el rio resplandecia por el brillo de sus escamas.  '
+  - 'Nadaban incansablemente, sorteando los obstaculos y peligros del camino, '
   - 'demostrando una tenacidad inquebrantable. '
   - 'Sin embargo, a medida que avanzaban, '
-  - "cada vez eran m\xE1s los Koi arrastrados por la corriente\u2026"
+  - "cada vez eran mas los Koi arrastrados por la corriente\u2026"
   textSpeed: 0.05
 --- !u!114 &1452431514
 MonoBehaviour:
@@ -3494,6 +3494,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452431511}
   m_CullTransparentMesh: 1
+--- !u!1001 &1501428668
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501865, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664144590178501870, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c1c4bf79ded14e6468c481b5ec651f3e, type: 3}
 --- !u!1 &1525448840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,11 +3642,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 2064810995}
   lines:
-  - "En alg\xFAn lugar del r\xEDo Amarillo, "
-  - "se encuentra una cascada llamada la Puerta del Drag\xF3n."
+  - 'En algun lugar del rio Amarillo, '
+  - se encuentra una cascada llamada la Puerta del Dragon.
   - 'Se cree que cualquier pez koi que logre nadar contra la fuerte corriente '
   - y saltar sobre la cascada
-  - "ser\xE1 recompensado por los dioses\u2026"
+  - "sera recompensado por los dioses\u2026"
   textSpeed: 0.05
 --- !u!1 &1572908733
 GameObject:
