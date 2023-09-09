@@ -23,6 +23,8 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] private GameObject vida3;
     [SerializeField] private GameObject vida4;
     [SerializeField] private GameObject vida5;
+    [Header("Sonidos")]
+    [SerializeField] FMODUnity.EventReference obstacleCrashSound;
 
     public int PuntosDeVida { get => puntosDeVida; set => puntosDeVida = value; }
     public bool Inmune { get => inmune; set => inmune = value; }
@@ -67,8 +69,9 @@ public class VidaPlayer : MonoBehaviour
                 //es el timer para el blink
                 //timer = 0;
                 StartCoroutine(BeInmune());
-
+                FMODUnity.RuntimeManager.PlayOneShotAttached(obstacleCrashSound, gameObject);
                 PuntosDeVida -=1;
+
                 if (PuntosDeVida == 0)
                 {
                     //ReiniciarEscena();
