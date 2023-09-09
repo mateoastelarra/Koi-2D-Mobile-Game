@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class VidaPlayer : MonoBehaviour
-{       
+{
+    [SerializeField] private  int puntosDeVidaMaximos;
     [SerializeField] private  int puntosDeVida;
     [SerializeField] private  Text textoUIvida;
     [Header("variables para effecto 'blink'")]
@@ -41,6 +42,11 @@ public class VidaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(puntosDeVida > puntosDeVidaMaximos)
+        {
+            puntosDeVida = puntosDeVidaMaximos;
+        }
         timerBlink += Time.deltaTime;
         /*
         timer += Time.deltaTime;

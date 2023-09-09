@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Master.strings.bank"
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638297879631518092
+  lastModified: 638298088721148853
   FileSizes:
   - Name: 
     Value: 954
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Sfx.bank"
   Name: Sfx
   StudioPath: bank:/Sfx
-  lastModified: 638297879632007855
+  lastModified: 638298088722151734
   FileSizes: []
   Exists: 1
 --- !u!114 &-344965287286016511
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Master.bank"
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638297879631498015
+  lastModified: 638298088721018848
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -136,7 +136,7 @@ MonoBehaviour:
   - {fileID: -344965287286016511}
   StringsBanks:
   - {fileID: -4856881063058182778}
-  cacheTime: 638297879632007855
+  cacheTime: 638298088722151734
   cacheVersion: 131607
 --- !u!114 &607031180943023779
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Musica.bank"
   Name: Musica
   StudioPath: bank:/Musica
-  lastModified: 638297879631806244
+  lastModified: 638298088721628241
   FileSizes: []
   Exists: 1
 --- !u!114 &1139705320199242279
