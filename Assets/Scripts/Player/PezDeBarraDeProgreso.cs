@@ -10,9 +10,23 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         [SerializeField] private float tiempoTotalVar = 5.0f; // Tiempo total para llegar de A a B en segundos.
         [SerializeField] private float escalaFinal;
 
+        [SerializeField] private GameObject azul;
+        [SerializeField] private GameObject peces;
+        
         [SerializeField] private GameObject pezBarra;
         [SerializeField] private GameObject barraAzul;
+        
         [SerializeField] private float cronometro = 0.0f;
+        
+       // [Header("Victoria")]
+
+       // [SerializeField] private GameObject barra1;
+        //[SerializeField] private GameObject barra2;
+       // [SerializeField] private GameObject barra3;
+
+
+
+
 
     void Update()
     {
@@ -38,13 +52,15 @@ public class PezDeBarraDeProgreso : MonoBehaviour
             // Restablece el cronómetro y el valor de interpolación para reiniciar el movimiento.
           //  cronometro = 0.0f;
           //  barraAzul.transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
-                SceneManager.LoadScene("Victoria");
+                //SceneManager.LoadScene("Victoria");
                 PlayerPrefs.SetInt("Progress", 3);
+
+                victoria();
 
         }
         else if (cronometro >= 2 * tiempoTotalVar / 3f)
         {
-            Debug.Log("hola");
+            //Debug.Log("hola");
             if (PlayerPrefs.GetInt("Progress") < 2)
             {
                 PlayerPrefs.SetInt("Progress", 2);
@@ -61,4 +77,42 @@ public class PezDeBarraDeProgreso : MonoBehaviour
     public float devolverCronometro(){
         return cronometro;
     }
+
+    public void victoria()
+    {
+        peces.SetActive(false);
+     StartCoroutine(CambiarTransparenciaDespuesDeDelay(2,azul.GetComponent<SpriteRenderer>(),0f));
+         StartCoroutine(cargarEscena(2,"Victoria"));
+
+    }
+
+
+private IEnumerator cargarEscena(float delay,string NombreEscena)
+    {
+
+       
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene (NombreEscena);
+
+
+    }
+     private IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float tiempoPasado = 0f;
+        Color colorInicial = spriteRenderer.color;
+        Color colorTransparente = new Color(colorInicial.r, colorInicial.g, colorInicial.b, 1f);
+
+        while (tiempoPasado < tiempoEnDesvanecer)
+        {
+            tiempoPasado += Time.deltaTime;
+            float t = Mathf.Clamp01(tiempoPasado / tiempoEnDesvanecer);
+            spriteRenderer.color = Color.Lerp(colorInicial, colorTransparente, t);
+            yield return null;
+        }
+    }
+
+
+
 }

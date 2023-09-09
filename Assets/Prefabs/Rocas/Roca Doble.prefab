@@ -68,12 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 0
-  velocidad1: 2
-  velocidad2: 4
-  velocidad3: 6
-  cronometro: 0
-  tiempoTotalVar: 120
-  barra: {fileID: 0}
+  velocidad1: 5
+  velocidad2: 6
+  velocidad3: 8
   numObstaculo: 1
 --- !u!1 &2226235461594813551
 GameObject:

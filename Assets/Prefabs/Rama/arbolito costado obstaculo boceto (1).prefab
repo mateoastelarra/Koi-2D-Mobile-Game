@@ -125,12 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 0
-  velocidad1: 2
-  velocidad2: 4
-  velocidad3: 6
-  cronometro: 0
-  tiempoTotalVar: 120
-  barra: {fileID: 0}
+  velocidad1: 5
+  velocidad2: 6
+  velocidad3: 8
   numObstaculo: 2
 --- !u!50 &1150713405236208789
 Rigidbody2D:
