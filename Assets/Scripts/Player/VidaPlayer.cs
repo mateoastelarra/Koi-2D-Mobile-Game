@@ -5,27 +5,32 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class VidaPlayer : MonoBehaviour
-{       
+{
+    [SerializeField] private  int puntosDeVidaMaximos;
     [SerializeField] private  int puntosDeVida;
     [SerializeField] private  Text textoUIvida;
+
     [Header("variables para effecto 'blink'")]
      private  SpriteRenderer spriteRenderer;
      private Material originalMaterial;
     [SerializeField] private Material MaterialBlink;
     [SerializeField] private float timerBlink;
-    [SerializeField] private float timer;
     [SerializeField] private float tiempoInmune;
     [SerializeField] private float tiempoEntreBlinks;
     [SerializeField] private bool inmune;
+    [SerializeField] private bool hasShield;
+
     [Header("Imagenes de vida de koi")]
     [SerializeField] private GameObject vida1;
     [SerializeField] private GameObject vida2;
     [SerializeField] private GameObject vida3;
     [SerializeField] private GameObject vida4;
     [SerializeField] private GameObject vida5;
+    
 
     public int PuntosDeVida { get => puntosDeVida; set => puntosDeVida = value; }
     public bool Inmune { get => inmune; set => inmune = value; }
+    public bool HasShield { get => hasShield; set => hasShield = value; }
 
 
 
@@ -39,20 +44,15 @@ public class VidaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(puntosDeVida > puntosDeVidaMaximos)
+        {
+            puntosDeVida = puntosDeVidaMaximos;
+        }
         timerBlink += Time.deltaTime;
-        /*
-        timer += Time.deltaTime;
-        if (timer < tiempoInmune)
-        {
-            Inmune = true;
-        }
-        else
-        {
-            Inmune = false;
-        }
-        */
+       
         Blink();
-         //textoUIvida.text = puntosDeVida.ToString();
+         
         AtualizarImagenDeVida();
     }
 
@@ -67,8 +67,9 @@ public class VidaPlayer : MonoBehaviour
                 //es el timer para el blink
                 //timer = 0;
                 StartCoroutine(BeInmune());
-
+                SFXManager.GetInstance().PlayCrashSound(gameObject);
                 PuntosDeVida -=1;
+
                 if (PuntosDeVida == 0)
                 {
                     //ReiniciarEscena();
@@ -126,7 +127,9 @@ public class VidaPlayer : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<PlayerMovement>().enabled = false;
         GetComponent<CapsuleCollider2D>().enabled = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        SFXManager.GetInstance().PlayDrumSound(gameObject);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(0);
     }
 
@@ -135,8 +138,12 @@ public class VidaPlayer : MonoBehaviour
         inmune = true;
 
         yield return new WaitForSeconds(tiempoInmune);
-
-        inmune = false;
+        
+        if (!HasShield)
+        {
+            inmune = false;
+        }
+        
     }
 
     public void AtualizarImagenDeVida()

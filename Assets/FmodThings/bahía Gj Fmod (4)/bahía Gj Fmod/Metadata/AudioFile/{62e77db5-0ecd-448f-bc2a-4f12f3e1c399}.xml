@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{62e77db5-0ecd-448f-bc2a-4f12f3e1c399}">
+		<property name="assetPath">
+			<value>gong.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.5714285714285712</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{668589d3-c486-4adc-b865-048badd521be}</destination>
+		</relationship>
+	</object>
+</objects>

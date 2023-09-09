@@ -67,10 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9841213660e0a408cf49fbd2a5cc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad1: 2
-  velocidad2: 3
-  velocidad3: 4
-  tiempoTotalVar: 120
+  velocidad: 0
+  velocidad1: 5
+  velocidad2: 6
+  velocidad3: 8
   numObstaculo: 1
 --- !u!1 &2226235461594813551
 GameObject:

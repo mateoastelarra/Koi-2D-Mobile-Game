@@ -8,6 +8,10 @@ public class LifeUpPowerUp : IPowerUp
     {
         VidaPlayer vidaPlayer = currentGameObject.GetComponent<VidaPlayer>();
         int vidas = vidaPlayer.PuntosDeVida;
-        vidaPlayer.PuntosDeVida = vidas + 1;
+        if (vidas < 5)
+        {
+            vidaPlayer.PuntosDeVida = vidas + 1;
+        }
+        SFXManager.GetInstance().PlayLifeUpSound(currentGameObject);
     }
 }
