@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4856881063058182778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Master.strings.bank"
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638297879631518092
+  FileSizes:
+  - Name: 
+    Value: 954
+  Exists: 1
+--- !u!114 &-4446486813851293699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Musica Men\xFA"
+  m_EditorClassIdentifier: 
+  Path: "event:/Musica Men\xFA"
+  Guid:
+    Data1: 85881079
+    Data2: 1221309741
+    Data3: -2039631949
+    Data4: 1652503990
+  Banks:
+  - {fileID: 607031180943023779}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 89305
+--- !u!114 &-1116212895895314138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Golpe
+  m_EditorClassIdentifier: 
+  Path: event:/Golpe
+  Guid:
+    Data1: 931344334
+    Data2: 1278633784
+    Data3: -859554635
+    Data4: 1862347547
+  Banks:
+  - {fileID: -1002437403853110998}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1002437403853110998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Sfx.bank
+  m_EditorClassIdentifier: 
+  Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Sfx.bank"
+  Name: Sfx
+  StudioPath: bank:/Sfx
+  lastModified: 638297879632007855
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-344965287286016511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Master.bank"
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638297879631498015
+  FileSizes: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -4856881063058182778}
+  - {fileID: -344965287286016511}
+  - {fileID: 607031180943023779}
+  - {fileID: -1002437403853110998}
+  EditorEvents:
+  - {fileID: 1139705320199242279}
+  - {fileID: -4446486813851293699}
+  - {fileID: -1116212895895314138}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -344965287286016511}
+  StringsBanks:
+  - {fileID: -4856881063058182778}
+  cacheTime: 638297879632007855
+  cacheVersion: 131607
+--- !u!114 &607031180943023779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Musica.bank
+  m_EditorClassIdentifier: 
+  Path: "Assets/FmodThings/bah\xEDa Gj Fmod (1)/bah\xEDa Gj Fmod/Build/Desktop/Musica.bank"
+  Name: Musica
+  StudioPath: bank:/Musica
+  lastModified: 638297879631806244
+  FileSizes: []
+  Exists: 1
+--- !u!114 &1139705320199242279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Musica Gameplay
+  m_EditorClassIdentifier: 
+  Path: event:/Musica Gameplay
+  Guid:
+    Data1: -553907904
+    Data2: 1189208886
+    Data3: 926269330
+    Data4: 1598855056
+  Banks:
+  - {fileID: 607031180943023779}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 36580
