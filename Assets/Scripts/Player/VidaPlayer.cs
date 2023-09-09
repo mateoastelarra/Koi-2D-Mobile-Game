@@ -9,15 +9,17 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] private  int puntosDeVidaMaximos;
     [SerializeField] private  int puntosDeVida;
     [SerializeField] private  Text textoUIvida;
+
     [Header("variables para effecto 'blink'")]
      private  SpriteRenderer spriteRenderer;
      private Material originalMaterial;
     [SerializeField] private Material MaterialBlink;
     [SerializeField] private float timerBlink;
-    [SerializeField] private float timer;
     [SerializeField] private float tiempoInmune;
     [SerializeField] private float tiempoEntreBlinks;
     [SerializeField] private bool inmune;
+    [SerializeField] private bool hasShield;
+
     [Header("Imagenes de vida de koi")]
     [SerializeField] private GameObject vida1;
     [SerializeField] private GameObject vida2;
@@ -28,6 +30,7 @@ public class VidaPlayer : MonoBehaviour
 
     public int PuntosDeVida { get => puntosDeVida; set => puntosDeVida = value; }
     public bool Inmune { get => inmune; set => inmune = value; }
+    public bool HasShield { get => hasShield; set => hasShield = value; }
 
 
 
@@ -47,19 +50,9 @@ public class VidaPlayer : MonoBehaviour
             puntosDeVida = puntosDeVidaMaximos;
         }
         timerBlink += Time.deltaTime;
-        /*
-        timer += Time.deltaTime;
-        if (timer < tiempoInmune)
-        {
-            Inmune = true;
-        }
-        else
-        {
-            Inmune = false;
-        }
-        */
+       
         Blink();
-         //textoUIvida.text = puntosDeVida.ToString();
+         
         AtualizarImagenDeVida();
     }
 
@@ -145,8 +138,12 @@ public class VidaPlayer : MonoBehaviour
         inmune = true;
 
         yield return new WaitForSeconds(tiempoInmune);
-
-        inmune = false;
+        
+        if (!HasShield)
+        {
+            inmune = false;
+        }
+        
     }
 
     public void AtualizarImagenDeVida()
