@@ -15,10 +15,14 @@ public class ShieldPowerUp : IPowerUp
 
         gameObject.GetComponent<VidaPlayer>().Inmune = true;
         shieldSprite.gameObject.SetActive(true);
+        SFXManager.GetInstance().PlayShieldSound(gameObject);
 
         await Task.Delay(TimeSpan.FromSeconds(5));
 
         shieldSprite.gameObject.SetActive(false);
+
+        await Task.Delay(TimeSpan.FromSeconds(0.2f));
+
         gameObject.GetComponent<VidaPlayer>().Inmune = false;
         
 
