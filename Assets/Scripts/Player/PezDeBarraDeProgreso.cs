@@ -90,15 +90,21 @@ public class PezDeBarraDeProgreso : MonoBehaviour
 private IEnumerator cargarEscena(float delay,string NombreEscena)
     {
 
-       
+       Debug.Log("llamado a cargar escena1");
+
         yield return new WaitForSeconds(delay);
+       Debug.Log("llamado a cargar escena2");
+
         SceneManager.LoadScene (NombreEscena);
 
 
     }
      private IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
     {
+               Debug.Log("llamado a cambiar transparencia1");
+
         yield return new WaitForSeconds(delay);
+               Debug.Log("llamado a cambiar transparencia2");
 
         float tiempoPasado = 0f;
         Color colorInicial = spriteRenderer.color;
