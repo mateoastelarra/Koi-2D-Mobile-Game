@@ -10,12 +10,10 @@ public class ChapterSelection : MonoBehaviour
     public Button[] buttons;
     public string[] chapterNames;
     public TextMeshProUGUI chapterName;
-    public Image victoryDragon;
 
     void Start()
     {
         InteractableButtons();
-        ShowVictoryDragon();
     }
 
     void Update()
@@ -54,15 +52,6 @@ public class ChapterSelection : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = (i <= progress);
-        }
-    }
-
-    private void ShowVictoryDragon()
-    {
-        int progress = PlayerPrefs.GetInt("Progress");
-        if (progress == buttons.Length -1)
-        {
-            victoryDragon.enabled = true;
         }
     }
 }
