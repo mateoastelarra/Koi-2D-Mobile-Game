@@ -1960,6 +1960,91 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1981366930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981366932}
+  - component: {fileID: 1981366931}
+  m_Layer: 0
+  m_Name: SFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1981366931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981366930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33216f842b8317941b2a89b1cc25a530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleCrashSound:
+    Guid:
+      Data1: 931344334
+      Data2: 1278633784
+      Data3: -859554635
+      Data4: 1862347547
+    Path: event:/Golpe
+  gongSound:
+    Guid:
+      Data1: -1632528862
+      Data2: 1211581032
+      Data3: 445484188
+      Data4: 1218843969
+    Path: event:/Gong para UI
+  UISound:
+    Guid:
+      Data1: 1448995682
+      Data2: 1256899103
+      Data3: -570964078
+      Data4: -257639338
+    Path: event:/CLick UI
+  drumSound:
+    Guid:
+      Data1: -1633876619
+      Data2: 1142106884
+      Data3: 638691516
+      Data4: 168736732
+    Path: event:/tambor chino para UI 2
+  shieldSound:
+    Guid:
+      Data1: -856788270
+      Data2: 1146202620
+      Data3: -837075301
+      Data4: -1286807653
+    Path: event:/Escudo
+  lifeUpSound:
+    Guid:
+      Data1: 1122869864
+      Data2: 1304061999
+      Data3: 826964924
+      Data4: 1814480487
+    Path: event:/1Up
+--- !u!4 &1981366932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981366930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 705.79706, y: 1678.6248, z: -2990.3696}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

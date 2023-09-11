@@ -1467,14 +1467,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca4c0443998b1847a7a931aa540d762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puntosDeVidaMaximos: 0
   puntosDeVida: 5
   textoUIvida: {fileID: 0}
   MaterialBlink: {fileID: 2100000, guid: a51a3aebb43ac044989270407476b208, type: 3}
   timerBlink: 0
-  timer: 4
   tiempoInmune: 1
   tiempoEntreBlinks: 0.1
   inmune: 0
+  hasShield: 0
   vida1: {fileID: 0}
   vida2: {fileID: 0}
   vida3: {fileID: 0}

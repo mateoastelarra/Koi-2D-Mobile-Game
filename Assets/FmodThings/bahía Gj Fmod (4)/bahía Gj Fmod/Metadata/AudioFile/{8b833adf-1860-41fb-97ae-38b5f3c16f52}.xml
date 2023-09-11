@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8b833adf-1860-41fb-97ae-38b5f3c16f52}">
+		<property name="assetPath">
+			<value>Escudo.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.25</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{668589d3-c486-4adc-b865-048badd521be}</destination>
+		</relationship>
+	</object>
+</objects>
