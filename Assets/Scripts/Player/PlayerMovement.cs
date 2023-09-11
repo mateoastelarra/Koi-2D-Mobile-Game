@@ -7,9 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 10;
 
     private Camera mainCamera;
-    private Rigidbody2D RB;
     private float cameraScrollingSpeed;
-
 
     private Vector2 input;
     private Vector3 target;
@@ -19,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-
-        RB = GetComponent<Rigidbody2D>();
         
         transform.position = Vector3.zero;
 

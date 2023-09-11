@@ -72,9 +72,13 @@ public class VidaPlayer : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<PlayerMovement>().enabled = false;
         GetComponent<CapsuleCollider2D>().enabled = false;
+
         yield return new WaitForSeconds(1);
+
         SFXManager.GetInstance().PlayDrumSound(gameObject);
+
         yield return new WaitForSeconds(1);
+
         SceneManager.LoadScene(0);
     }
 
@@ -102,7 +106,6 @@ public class VidaPlayer : MonoBehaviour
     private void Blink()
     {
         
-
         if (Inmune)
         {
             if (timerBlink >= tiempoEntreBlinks)
