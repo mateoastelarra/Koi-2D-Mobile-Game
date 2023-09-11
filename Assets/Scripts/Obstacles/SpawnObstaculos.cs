@@ -52,14 +52,14 @@ public class SpawnObstaculos : MonoBehaviour
         camTransform = Camera.main.transform;
 
         //TiempoParaSpawn = Random.Range(TiempoParaSpawnMin, TiempoParaSpawnMax);
-                barra = GameObject.Find("ManagerBarra").GetComponent<PezDeBarraDeProgreso>();
-            SetearTiempoSpawn();
+        barra = GameObject.Find("ManagerBarra").GetComponent<PezDeBarraDeProgreso>();
+        SetearTiempoSpawn();
 
     }
   
     void Update()
     {
-                cronometro = barra.devolverCronometro();
+        cronometro = barra.devolverCronometro();
 
         // Actualizar la posición del eje Y de la cámara
         camYPosition = camTransform.position.y;
@@ -76,32 +76,27 @@ public class SpawnObstaculos : MonoBehaviour
 
     public void SetearTiempoSpawn()
     {
-
-
-
-
         float tiempo1 = tiempoTotalVar * 0.33333333333f;
         float tiempo2 = tiempoTotalVar * 0.66666666666f;
-        float tiempo3 = tiempoTotalVar ;
 
 
 
 
-            if (cronometro > 0f && cronometro < tiempo1)
-            {
-                TiempoParaSpawn = TiempoParaSpawn1;
-            }
+        if (cronometro > 0f && cronometro < tiempo1)
+        {
+            TiempoParaSpawn = TiempoParaSpawn1;
+        }
          
-            if (cronometro > tiempo1 && cronometro < tiempo2)
-            {            
-                TiempoParaSpawn = TiempoParaSpawn2;
+        if (cronometro > tiempo1 && cronometro < tiempo2)
+        {            
+            TiempoParaSpawn = TiempoParaSpawn2;
 
-            }
-            if (cronometro > tiempo2 )
-            {
-                TiempoParaSpawn = TiempoParaSpawn3;
+        }
+        if (cronometro > tiempo2 )
+        {
+            TiempoParaSpawn = TiempoParaSpawn3;
 
-            }
+        }
 
     }
 
@@ -109,7 +104,7 @@ public class SpawnObstaculos : MonoBehaviour
     {
         tiempoPasado = 0;
   
-         randomNumParaPiedra = Random.Range(1, 6); // aca va (1, numero de obstaculos +1)
+        randomNumParaPiedra = Random.Range(1, 6); // aca va (1, numero de obstaculos +1)
         if (numAnt ==  randomNumParaPiedra){
             // esto es para que no salgan muchas veces seguidas el de la piedra del medio o el de las dos pidras por que queda medio mal
              randomNumParaPiedra = Random.Range(1, 6);
@@ -142,9 +137,7 @@ public class SpawnObstaculos : MonoBehaviour
 
         numAnt =  randomNumParaPiedra;
 
-        //Instanciar
-
-         GameObject nuevoObstaculo = Instantiate(obstaculoElegido, spawnPosition, Quaternion.identity);
+        GameObject nuevoObstaculo = Instantiate(obstaculoElegido, spawnPosition, Quaternion.identity);
     
         // Establecer el objeto padre
         nuevoObstaculo.transform.SetParent(transform);

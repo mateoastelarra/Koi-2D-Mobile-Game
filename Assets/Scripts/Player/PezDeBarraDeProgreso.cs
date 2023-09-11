@@ -5,32 +5,22 @@ using UnityEngine.SceneManagement;
     
 public class PezDeBarraDeProgreso : MonoBehaviour
 {
-        [SerializeField] private Transform puntoA;
-        [SerializeField] private Transform puntoB;
-        [SerializeField] private float tiempoTotalVar = 5.0f; // Tiempo total para llegar de A a B en segundos.
-        [SerializeField] private float escalaFinal;
+    [SerializeField] private Transform puntoA;
+    [SerializeField] private Transform puntoB;
+    [SerializeField] private float tiempoTotalVar = 5.0f; // Tiempo total para llegar de A a B en segundos.
+    [SerializeField] private float escalaFinal;
 
-        [SerializeField] private GameObject azul;
-        [SerializeField] private GameObject peces;
+    [SerializeField] private GameObject azul;
+    [SerializeField] private GameObject peces;
         
-        [SerializeField] private GameObject pezBarra;
-        [SerializeField] private GameObject barraAzul;
+    [SerializeField] private GameObject pezBarra;
+    [SerializeField] private GameObject barraAzul;
         
-        [SerializeField] private float cronometro = 0.0f;
+    [SerializeField] private float cronometro = 0.0f;
         
-       // [Header("Victoria")]
-
-       // [SerializeField] private GameObject barra1;
-        //[SerializeField] private GameObject barra2;
-       // [SerializeField] private GameObject barra3;
-
-
-
-
 
     void Update()
     {
-        // Incrementa el cronómetro con el tiempo delta.
         cronometro += Time.deltaTime;
 
         // Calcula el valor de interpolación en función del cronómetro.
@@ -38,7 +28,6 @@ public class PezDeBarraDeProgreso : MonoBehaviour
 
         // Usa la función Lerp para mover el objeto.
         pezBarra.transform.position = Vector3.Lerp(puntoA.position, puntoB.position, valorInterpolacion);
-
 
         // Calcula la escala actual utilizando Lerp.
         float escalaActual = Mathf.Lerp(0.0f, escalaFinal, valorInterpolacion);
@@ -49,18 +38,13 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         // Si deseas que el objeto regrese a A cuando llega a B, puedes usar algo como esto:
         if (cronometro >= tiempoTotalVar)
         {
-            // Restablece el cronómetro y el valor de interpolación para reiniciar el movimiento.
-          //  cronometro = 0.0f;
-          //  barraAzul.transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
-                //SceneManager.LoadScene("Victoria");
-                PlayerPrefs.SetInt("Progress", 3);
+             PlayerPrefs.SetInt("Progress", 3);
 
-                victoria();
+            victoria();
 
         }
         else if (cronometro >= 2 * tiempoTotalVar / 3f)
         {
-            //Debug.Log("hola");
             if (PlayerPrefs.GetInt("Progress") < 2)
             {
                 PlayerPrefs.SetInt("Progress", 2);
@@ -74,6 +58,7 @@ public class PezDeBarraDeProgreso : MonoBehaviour
             }
         }
     }
+
     public float devolverCronometro(){
         return cronometro;
     }
@@ -81,30 +66,31 @@ public class PezDeBarraDeProgreso : MonoBehaviour
     public void victoria()
     {
         peces.SetActive(false);
-     StartCoroutine(CambiarTransparenciaDespuesDeDelay(2,azul.GetComponent<SpriteRenderer>(),0f));
-         StartCoroutine(cargarEscena(2,"Victoria"));
+        StartCoroutine(CambiarTransparenciaDespuesDeDelay(2,azul.GetComponent<SpriteRenderer>(),0f));
+        StartCoroutine(cargarEscena(2,"Victoria"));
 
     }
 
 
-private IEnumerator cargarEscena(float delay,string NombreEscena)
+    private IEnumerator cargarEscena(float delay,string NombreEscena)
     {
 
-       Debug.Log("llamado a cargar escena1");
+        Debug.Log("llamado a cargar escena1");
 
         yield return new WaitForSeconds(delay);
-       Debug.Log("llamado a cargar escena2");
+        
+        Debug.Log("llamado a cargar escena2");
 
         SceneManager.LoadScene (NombreEscena);
-
-
     }
-     private IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
+
+    private IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
     {
-               Debug.Log("llamado a cambiar transparencia1");
+        Debug.Log("llamado a cambiar transparencia1");
 
         yield return new WaitForSeconds(delay);
-               Debug.Log("llamado a cambiar transparencia2");
+        
+        Debug.Log("llamado a cambiar transparencia2");
 
         float tiempoPasado = 0f;
         Color colorInicial = spriteRenderer.color;

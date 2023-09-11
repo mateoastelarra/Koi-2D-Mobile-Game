@@ -42,6 +42,7 @@ public class Obstaculos : MonoBehaviour
         cronometro = barra.devolverCronometro();
 
         setearVelocidad();
+
         rb.AddForce ( Vector2.down.normalized * velocidad, ForceMode2D.Impulse);
     }
 
