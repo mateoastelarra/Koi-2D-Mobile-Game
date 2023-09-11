@@ -1757,15 +1757,16 @@ MonoBehaviour:
   textoUIvida: {fileID: 0}
   MaterialBlink: {fileID: 2100000, guid: a51a3aebb43ac044989270407476b208, type: 3}
   timerBlink: 0
-  timer: 4
   tiempoInmune: 1
   tiempoEntreBlinks: 0.1
   inmune: 0
-  vida1: {fileID: 224205809}
-  vida2: {fileID: 1142018838}
-  vida3: {fileID: 1958368024}
-  vida4: {fileID: 608507442}
-  vida5: {fileID: 686523162}
+  hasShield: 0
+  lives:
+  - {fileID: 224205809}
+  - {fileID: 1142018838}
+  - {fileID: 1958368024}
+  - {fileID: 608507442}
+  - {fileID: 686523162}
 --- !u!114 &720887304
 MonoBehaviour:
   m_ObjectHideFlags: 0

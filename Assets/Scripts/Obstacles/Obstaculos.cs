@@ -14,9 +14,9 @@ public class Obstaculos : MonoBehaviour
 
     
     private Rigidbody2D rb;
-     private float cronometro = 0.0f;
-     private float tiempoTotalVar = 120f; // Tiempo total para llegar de A a B en segundos.
-   private PezDeBarraDeProgreso barra;
+    private float cronometro = 0.0f;
+    private float tiempoTotalVar = 120f; // Tiempo total para llegar de A a B en segundos.
+    private PezDeBarraDeProgreso barra;
     [Header("Num Obstaculo : 1=piedra, 2=rama")]
 
     [SerializeField] private int numObstaculo;
@@ -33,7 +33,7 @@ public class Obstaculos : MonoBehaviour
 
             if (randomNum == 2)
             {
-                 Vector3 newScale = transform.localScale;
+                Vector3 newScale = transform.localScale;
                 newScale.x *= -1; // Cambiar la escala de X al valor opuesto
 
                 transform.localScale = newScale;        
@@ -69,7 +69,7 @@ public class Obstaculos : MonoBehaviour
 
         float tiempo1 = tiempoTotalVar * 0.33333333333f;
         float tiempo2 = tiempoTotalVar * 0.66666666666f;
-        float tiempo3 = tiempoTotalVar ;
+        float tiempo3 = tiempoTotalVar;
 
 
 
