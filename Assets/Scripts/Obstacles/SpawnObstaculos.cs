@@ -105,10 +105,12 @@ public class SpawnObstaculos : MonoBehaviour
         tiempoPasado = 0;
   
         randomNumParaPiedra = Random.Range(1, 6); // aca va (1, numero de obstaculos +1)
+
         if (numAnt ==  randomNumParaPiedra){
             // esto es para que no salgan muchas veces seguidas el de la piedra del medio o el de las dos pidras por que queda medio mal
              randomNumParaPiedra = Random.Range(1, 6);
         }
+
         switch (randomNumParaPiedra)
         {
            

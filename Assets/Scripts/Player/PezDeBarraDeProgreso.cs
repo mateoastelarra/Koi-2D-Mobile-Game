@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
     
 public class PezDeBarraDeProgreso : MonoBehaviour
 {
-    [SerializeField] private Transform puntoA;
-    [SerializeField] private Transform puntoB;
-    [SerializeField] private float tiempoTotalVar = 5.0f; // Tiempo total para llegar de A a B en segundos.
+    [Header("UI")]
+    [SerializeField] private Transform startingPoint;
+    [SerializeField] private Transform endingPoint;
+    [SerializeField] private GameObject livesUI;
+    [SerializeField] private GameObject fishBar;
+    [SerializeField] private GameObject blueBar;
+
+    [SerializeField] private float totalGameTime = 5.0f; // Tiempo total para llegar de A a B en segundos.
     [SerializeField] private float escalaFinal;
 
     [SerializeField] private GameObject azul;
-    [SerializeField] private GameObject peces;
+    
         
-    [SerializeField] private GameObject pezBarra;
-    [SerializeField] private GameObject barraAzul;
+    
         
     [SerializeField] private float cronometro = 0.0f;
         
@@ -23,34 +27,27 @@ public class PezDeBarraDeProgreso : MonoBehaviour
     {
         cronometro += Time.deltaTime;
 
-        // Calcula el valor de interpolación en función del cronómetro.
-        float valorInterpolacion = Mathf.Clamp01(cronometro / tiempoTotalVar);
+        UpdateProgressBarUI();
+        SaveProgressInPlayerPrefs();
+    }
 
-        // Usa la función Lerp para mover el objeto.
-        pezBarra.transform.position = Vector3.Lerp(puntoA.position, puntoB.position, valorInterpolacion);
-
-        // Calcula la escala actual utilizando Lerp.
-        float escalaActual = Mathf.Lerp(0.0f, escalaFinal, valorInterpolacion);
-
-        // Aplica la escala actual al objeto en el eje X.
-        Vector3 nuevaEscala = new Vector3(escalaActual, transform.localScale.y, transform.localScale.z);
-        barraAzul.transform.localScale = nuevaEscala;
-        // Si deseas que el objeto regrese a A cuando llega a B, puedes usar algo como esto:
-        if (cronometro >= tiempoTotalVar)
+    void SaveProgressInPlayerPrefs()
+    {
+        if (cronometro >= totalGameTime)
         {
-             PlayerPrefs.SetInt("Progress", 3);
+            PlayerPrefs.SetInt("Progress", 3);
 
             victoria();
 
         }
-        else if (cronometro >= 2 * tiempoTotalVar / 3f)
+        else if (cronometro >= 2 * totalGameTime / 3f)
         {
             if (PlayerPrefs.GetInt("Progress") < 2)
             {
                 PlayerPrefs.SetInt("Progress", 2);
             }
         }
-        else if (cronometro >=  tiempoTotalVar / 3f)
+        else if (cronometro >= totalGameTime / 3f)
         {
             if (PlayerPrefs.GetInt("Progress") < 1)
             {
@@ -59,20 +56,37 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         }
     }
 
-    public float devolverCronometro(){
+    void UpdateProgressBarUI()
+    {
+        // Calcula el valor de interpolación en función del cronómetro.
+        float valorInterpolacion = Mathf.Clamp01(cronometro / totalGameTime);
+
+        // Usa la función Lerp para mover el objeto.
+        fishBar.transform.position = Vector3.Lerp(startingPoint.position, endingPoint.position, valorInterpolacion);
+
+        // Calcula la escala actual utilizando Lerp.
+        float escalaActual = Mathf.Lerp(0.0f, escalaFinal, valorInterpolacion);
+
+        // Aplica la escala actual al objeto en el eje X.
+        Vector3 nuevaEscala = new Vector3(escalaActual, transform.localScale.y, transform.localScale.z);
+        blueBar.transform.localScale = nuevaEscala;
+    }
+
+    public float devolverCronometro()
+    {
         return cronometro;
     }
 
     public void victoria()
     {
-        peces.SetActive(false);
+        livesUI.SetActive(false);
         StartCoroutine(CambiarTransparenciaDespuesDeDelay(2,azul.GetComponent<SpriteRenderer>(),0f));
         StartCoroutine(cargarEscena(2,"Victoria"));
 
     }
 
 
-    private IEnumerator cargarEscena(float delay,string NombreEscena)
+    IEnumerator cargarEscena(float delay,string NombreEscena)
     {
 
         Debug.Log("llamado a cargar escena1");
@@ -84,7 +98,7 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         SceneManager.LoadScene (NombreEscena);
     }
 
-    private IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
+    IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
     {
         Debug.Log("llamado a cambiar transparencia1");
 
