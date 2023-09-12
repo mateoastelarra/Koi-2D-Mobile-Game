@@ -13,6 +13,7 @@ public class PezDeBarraDeProgreso : MonoBehaviour
     [SerializeField] private GameObject blueBar;
 
     [SerializeField] private float totalGameTime = 5.0f; // Tiempo total para llegar de A a B en segundos.
+    [SerializeField] private int totalGamePhases = 3;
     [SerializeField] private float escalaFinal;
 
     [SerializeField] private GameObject azul;
@@ -20,7 +21,7 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         
     
         
-    [SerializeField] private float cronometro = 0.0f;
+    [SerializeField] private float cronometro = 0;
         
 
     void Update()
@@ -40,14 +41,14 @@ public class PezDeBarraDeProgreso : MonoBehaviour
             victoria();
 
         }
-        else if (cronometro >= 2 * totalGameTime / 3f)
+        else if (cronometro >= 2 * totalGameTime / totalGamePhases * 1f)
         {
             if (PlayerPrefs.GetInt("Progress") < 2)
             {
                 PlayerPrefs.SetInt("Progress", 2);
             }
         }
-        else if (cronometro >= totalGameTime / 3f)
+        else if (cronometro >= totalGameTime / totalGamePhases * 1f)
         {
             if (PlayerPrefs.GetInt("Progress") < 1)
             {
