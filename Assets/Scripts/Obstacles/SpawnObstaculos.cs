@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SpawnObstaculos : MonoBehaviour
 {
-    private float timeBetweenSpawns;
+    [Header("changes for each phase")]
     [SerializeField] private float[] timeBetweenSpawnForEachPhase;
-   
+    private float timeBetweenSpawns;
+    private int velocityPhase;
+
     [Header("GameObjets de obstaculos(Prefabs)")]
 
     [SerializeField] private  GameObject piedraRandom;
@@ -23,39 +25,28 @@ public class SpawnObstaculos : MonoBehaviour
     [SerializeField] private PezDeBarraDeProgreso barra;
     private  Vector2 spawnPosition;
     private  GameObject obstaculoElegido;
-    private  float tiempoPasado;
+    private  float elapsedTime;
     
 
     private Transform camTransform;
-    private float camYPosition;
+    //private float camYPosition;
     private int numAnt;
     public int randomNumParaPiedra;
-
-    private float cronometro = 0.0f;
-    //private PezDeBarraDeProgreso barra;
-    private float tiempoTotalVar = 120f; // Tiempo total para llegar de A a B en segundos.
-
 
     void Start()
     {
         camTransform = Camera.main.transform;
 
-        //barra = GameObject.Find("ManagerBarra").GetComponent<PezDeBarraDeProgreso>();
-        //SetearTiempoSpawn();
         timeBetweenSpawns = timeBetweenSpawnForEachPhase[0];
-
     }
   
     void Update()
     {
-        cronometro = barra.GetTimer();
+        // Update cam y position
+        //camYPosition = camTransform.position.y;
 
-        // Actualizar la posición del eje Y de la cámara
-        camYPosition = camTransform.position.y;
-
-
-        tiempoPasado += Time.deltaTime;
-        if (tiempoPasado > timeBetweenSpawns)
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > timeBetweenSpawns)
         {
             Spawnear();
             //SetearTiempoSpawn();
@@ -71,11 +62,12 @@ public class SpawnObstaculos : MonoBehaviour
     {
         Debug.Log("cambiando velocidad " + phase);
         timeBetweenSpawns = timeBetweenSpawnForEachPhase[phase];
+        velocityPhase = phase;
     }
 
     public void Spawnear()
     {
-        tiempoPasado = 0;
+        elapsedTime = 0;
   
         randomNumParaPiedra = Random.Range(1, 6); // aca va (1, numero de obstaculos +1)
 
@@ -89,33 +81,34 @@ public class SpawnObstaculos : MonoBehaviour
            
             case 1:
                 obstaculoElegido = piedraRandom.gameObject;
-                spawnPosition = new Vector2( Random.Range(limiteXizquierdo, limiteXderecho),posicionYparaObstaculos + camYPosition);
+                spawnPosition = new Vector2( Random.Range(limiteXizquierdo, limiteXderecho),posicionYparaObstaculos + camTransform.position.y);
                 break;
             case 2:
                 obstaculoElegido = piedraDoble.gameObject;
-                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
+                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camTransform.position.y);
                 break;
             case 3:
                 obstaculoElegido = piedraMedio.gameObject;
-                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
+                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camTransform.position.y);
                 break;
              case 4:
                 obstaculoElegido = rama.gameObject;
-                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
+                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camTransform.position.y);
                 break;    
              case 5:
                 obstaculoElegido = rama.gameObject;
-                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camYPosition);
+                spawnPosition = new Vector2( 0,posicionYparaObstaculos + camTransform.position.y);
                 break; 
                      
         }
 
         numAnt =  randomNumParaPiedra;
 
-        GameObject nuevoObstaculo = Instantiate(obstaculoElegido, spawnPosition, Quaternion.identity);
+        GameObject newObstacle = Instantiate(obstaculoElegido, spawnPosition, Quaternion.identity);
+
+        newObstacle.GetComponent<Obstaculos>().SetVelocity(velocityPhase);
     
-        // Establecer el objeto padre
-        nuevoObstaculo.transform.SetParent(transform);
+        newObstacle.transform.SetParent(transform);
 
     }
 
