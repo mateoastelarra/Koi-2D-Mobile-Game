@@ -38,14 +38,11 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         if (actualPhase > phase)
         {
             phase = actualPhase;
-            Debug.Log(phase);
             if (OnChangePhase != null)
             {
                 OnChangePhase.Invoke(phase);
             }
         }
-
-        
 
         if (phase == totalGamePhases)
         {
@@ -93,23 +90,14 @@ public class PezDeBarraDeProgreso : MonoBehaviour
 
     IEnumerator cargarEscena(float delay,string NombreEscena)
     {
-
-        Debug.Log("llamado a cargar escena1");
-
         yield return new WaitForSeconds(delay);
-        
-        Debug.Log("llamado a cargar escena2");
 
         SceneManager.LoadScene (NombreEscena);
     }
 
     IEnumerator CambiarTransparenciaDespuesDeDelay(float tiempoEnDesvanecer, SpriteRenderer spriteRenderer,float delay)
     {
-        Debug.Log("llamado a cambiar transparencia1");
-
         yield return new WaitForSeconds(delay);
-        
-        Debug.Log("llamado a cambiar transparencia2");
 
         float tiempoPasado = 0f;
         Color colorInicial = spriteRenderer.color;

@@ -4369,15 +4369,15 @@ MonoBehaviour:
   - 4
   - 1.9
   - 1
-  piedraRandom: {fileID: 6395868495331204657, guid: 811b47013b748cb43ab60bbd87131a2f, type: 3}
-  piedraDoble: {fileID: 567200386630203239, guid: 3c4c58782a666d7448001c1d28424f8e, type: 3}
-  piedraMedio: {fileID: 1550136236484372178, guid: 1faf29573f2c41d46b537195498696db, type: 3}
-  rama: {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
-  posicionYparaObstaculos: 6
-  limiteXizquierdo: -1.17
-  limiteXderecho: 1.5
+  obstacles:
+  - {fileID: 6395868495331204657, guid: 811b47013b748cb43ab60bbd87131a2f, type: 3}
+  - {fileID: 1550136236484372178, guid: 1faf29573f2c41d46b537195498696db, type: 3}
+  - {fileID: 567200386630203239, guid: 3c4c58782a666d7448001c1d28424f8e, type: 3}
+  - {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
+  - {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
+  xLeftBound: -1.17
+  xRightBound: 0
   barra: {fileID: 285172532}
-  randomNumParaPiedra: 0
 --- !u!4 &1897537766
 Transform:
   m_ObjectHideFlags: 0
@@ -4386,7 +4386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897537764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 7.16, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1687258585}

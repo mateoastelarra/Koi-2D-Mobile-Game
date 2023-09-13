@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Obstaculos : MonoBehaviour
 {
-    private float velocity;
     [SerializeField] private float[] velocityForEachPhase;
 
     private Rigidbody2D rb;
 
     [Header("Num Obstaculo : 1=piedra, 2=rama")]
     [SerializeField] private int numObstaculo;
+
+    private float velocity;
 
     void Start()
     {
@@ -43,7 +44,8 @@ public class Obstaculos : MonoBehaviour
 
     public void SetVelocity(int phase)
     {
-        velocity = velocityForEachPhase[phase];
+        if (phase < velocityForEachPhase.Length)
+            velocity = velocityForEachPhase[phase];
     }
 
 }
