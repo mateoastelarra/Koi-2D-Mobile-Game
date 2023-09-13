@@ -11,56 +11,50 @@ public class PezDeBarraDeProgreso : MonoBehaviour
     [SerializeField] private GameObject livesUI;
     [SerializeField] private GameObject fishBar;
     [SerializeField] private GameObject blueBar;
+    [SerializeField] private GameObject azul;
 
-    [SerializeField] private float totalGameTime = 5.0f; // Tiempo total para llegar de A a B en segundos.
+    [Header("Game Duration Parameters")]
+    [SerializeField] private float totalGameTime = 5.0f; 
     [SerializeField] private int totalGamePhases = 3;
     [SerializeField] private float escalaFinal;
 
-    [SerializeField] private GameObject azul;
-    
-        
-    
-        
-    [SerializeField] private float cronometro = 0;
-        
+    private float timer = 0;
+    private int phase = 0;
 
     void Update()
     {
-        cronometro += Time.deltaTime;
-
+        timer += Time.deltaTime;
         UpdateProgressBarUI();
         SaveProgressInPlayerPrefs();
+        ChangePhase();
+    }
+
+    void ChangePhase()
+    {
+        int actualPhase = (int)(timer * totalGamePhases / totalGameTime);
+        if (actualPhase > phase)
+        {
+            phase = actualPhase;
+            Debug.Log(phase);
+        }
+        if (phase == totalGamePhases)
+        {
+            victoria();
+        }
     }
 
     void SaveProgressInPlayerPrefs()
     {
-        if (cronometro >= totalGameTime)
+        if (phase > PlayerPrefs.GetInt("Progress"))
         {
-            PlayerPrefs.SetInt("Progress", 3);
-
-            victoria();
-
-        }
-        else if (cronometro >= 2 * totalGameTime / totalGamePhases * 1f)
-        {
-            if (PlayerPrefs.GetInt("Progress") < 2)
-            {
-                PlayerPrefs.SetInt("Progress", 2);
-            }
-        }
-        else if (cronometro >= totalGameTime / totalGamePhases * 1f)
-        {
-            if (PlayerPrefs.GetInt("Progress") < 1)
-            {
-                PlayerPrefs.SetInt("Progress", 1);
-            }
+            PlayerPrefs.SetInt("Progress", phase);
         }
     }
 
     void UpdateProgressBarUI()
     {
         // Calcula el valor de interpolación en función del cronómetro.
-        float valorInterpolacion = Mathf.Clamp01(cronometro / totalGameTime);
+        float valorInterpolacion = Mathf.Clamp01(timer / totalGameTime);
 
         // Usa la función Lerp para mover el objeto.
         fishBar.transform.position = Vector3.Lerp(startingPoint.position, endingPoint.position, valorInterpolacion);
@@ -73,9 +67,9 @@ public class PezDeBarraDeProgreso : MonoBehaviour
         blueBar.transform.localScale = nuevaEscala;
     }
 
-    public float devolverCronometro()
+    public float GetTimer()
     {
-        return cronometro;
+        return timer;
     }
 
     public void victoria()

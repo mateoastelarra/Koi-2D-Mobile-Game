@@ -59,7 +59,7 @@ public class SpawnObstaculos : MonoBehaviour
   
     void Update()
     {
-        cronometro = barra.devolverCronometro();
+        cronometro = barra.GetTimer();
 
         // Actualizar la posición del eje Y de la cámara
         camYPosition = camTransform.position.y;

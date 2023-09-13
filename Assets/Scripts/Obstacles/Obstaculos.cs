@@ -39,7 +39,7 @@ public class Obstaculos : MonoBehaviour
              }   
         }
 
-        cronometro = barra.devolverCronometro();
+        cronometro = barra.GetTimer();
 
         setearVelocidad();
 
