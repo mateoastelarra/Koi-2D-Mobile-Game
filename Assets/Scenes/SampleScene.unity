@@ -955,10 +955,10 @@ MonoBehaviour:
   livesUI: {fileID: 821475879}
   fishBar: {fileID: 1104564263}
   blueBar: {fileID: 1438875302}
-  totalGameTime: 120
-  escalaFinal: 0.9262814
   azul: {fileID: 870083294}
-  cronometro: 0
+  totalGameTime: 120
+  totalGamePhases: 3
+  escalaFinal: 0.9262814
 --- !u!1 &315132667
 GameObject:
   m_ObjectHideFlags: 0
@@ -4365,6 +4365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133dc366a1cab9459e04b7ed3679114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenSpawnForEachPhase:
+  - 4
+  - 1.9
+  - 1
   TiempoParaSpawn1: 4
   TiempoParaSpawn2: 1.9
   TiempoParaSpawn3: 1
@@ -4375,6 +4379,7 @@ MonoBehaviour:
   posicionYparaObstaculos: 6
   limiteXizquierdo: -1.17
   limiteXderecho: 1.5
+  barra: {fileID: 285172532}
   randomNumParaPiedra: 0
 --- !u!4 &1897537766
 Transform:

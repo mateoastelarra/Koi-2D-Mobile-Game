@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class SpawnObstaculos : MonoBehaviour
 {
-    [Header("Tiempo Para Spawnear")]
-
- //   [SerializeField] private  float TiempoParaSpawnMin ;//, limiteYArrBrocoli,LimiteYabajoBrocoli,poisicionXBrocoli,limiteXizqFrutilla,limiteXderFrutilla,posicionYfutilla;
- //   [SerializeField] private  float TiempoParaSpawnMax;
-       private  float TiempoParaSpawn;
-      [SerializeField] private  float TiempoParaSpawn1;
-      [SerializeField] private  float TiempoParaSpawn2;
-      [SerializeField] private  float TiempoParaSpawn3;
-
-       
+    private float timeBetweenSpawns;
+    [SerializeField] private float[] timeBetweenSpawnForEachPhase;
+   
     [Header("GameObjets de obstaculos(Prefabs)")]
 
     [SerializeField] private  GameObject piedraRandom;
@@ -21,39 +14,35 @@ public class SpawnObstaculos : MonoBehaviour
     [SerializeField] private  GameObject piedraMedio;
     [SerializeField] private  GameObject rama;
 
-
-
     [Header("Posiciones")]
 
     [SerializeField] private  float posicionYparaObstaculos;
     [SerializeField] private  float limiteXizquierdo;
     [SerializeField] private  float limiteXderecho;
 
-
+    [SerializeField] private PezDeBarraDeProgreso barra;
     private  Vector2 spawnPosition;
     private  GameObject obstaculoElegido;
     private  float tiempoPasado;
-    //private  float TiempoParaSpawn;
+    
 
     private Transform camTransform;
     private float camYPosition;
     private int numAnt;
     public int randomNumParaPiedra;
 
-
     private float cronometro = 0.0f;
-    private PezDeBarraDeProgreso barra;
+    //private PezDeBarraDeProgreso barra;
     private float tiempoTotalVar = 120f; // Tiempo total para llegar de A a B en segundos.
 
 
     void Start()
     {
-        // Obtener el transform de la cámara
         camTransform = Camera.main.transform;
 
-        //TiempoParaSpawn = Random.Range(TiempoParaSpawnMin, TiempoParaSpawnMax);
-        barra = GameObject.Find("ManagerBarra").GetComponent<PezDeBarraDeProgreso>();
-        SetearTiempoSpawn();
+        //barra = GameObject.Find("ManagerBarra").GetComponent<PezDeBarraDeProgreso>();
+        //SetearTiempoSpawn();
+        timeBetweenSpawns = timeBetweenSpawnForEachPhase[0];
 
     }
   
@@ -66,38 +55,22 @@ public class SpawnObstaculos : MonoBehaviour
 
 
         tiempoPasado += Time.deltaTime;
-        if (tiempoPasado > TiempoParaSpawn)
+        if (tiempoPasado > timeBetweenSpawns)
         {
             Spawnear();
-            SetearTiempoSpawn();
+            //SetearTiempoSpawn();
         }
     }
 
-
-    public void SetearTiempoSpawn()
+    private void OnEnable()
     {
-        float tiempo1 = tiempoTotalVar * 0.33333333333f;
-        float tiempo2 = tiempoTotalVar * 0.66666666666f;
+        barra.OnChangePhase += ChangeSpawnTime;
+    }
 
-
-
-
-        if (cronometro > 0f && cronometro < tiempo1)
-        {
-            TiempoParaSpawn = TiempoParaSpawn1;
-        }
-         
-        if (cronometro > tiempo1 && cronometro < tiempo2)
-        {            
-            TiempoParaSpawn = TiempoParaSpawn2;
-
-        }
-        if (cronometro > tiempo2 )
-        {
-            TiempoParaSpawn = TiempoParaSpawn3;
-
-        }
-
+    void ChangeSpawnTime(int phase)
+    {
+        Debug.Log("cambiando velocidad " + phase);
+        timeBetweenSpawns = timeBetweenSpawnForEachPhase[phase];
     }
 
     public void Spawnear()
@@ -107,7 +80,7 @@ public class SpawnObstaculos : MonoBehaviour
         randomNumParaPiedra = Random.Range(1, 6); // aca va (1, numero de obstaculos +1)
 
         if (numAnt ==  randomNumParaPiedra){
-            // esto es para que no salgan muchas veces seguidas el de la piedra del medio o el de las dos pidras por que queda medio mal
+            // esto es para que no salgan muchas veces seguidas el de la piedra del medio o el de las dos piedras por que queda medio mal
              randomNumParaPiedra = Random.Range(1, 6);
         }
 

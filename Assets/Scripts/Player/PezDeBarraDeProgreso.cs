@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
     
@@ -21,22 +21,32 @@ public class PezDeBarraDeProgreso : MonoBehaviour
     private float timer = 0;
     private int phase = 0;
 
+    public event Action<int> OnChangePhase;
+
     void Update()
     {
         timer += Time.deltaTime;
-        UpdateProgressBarUI();
-        SaveProgressInPlayerPrefs();
         ChangePhase();
+        UpdateProgressBarUI();
+        SaveProgressInPlayerPrefs();   
     }
 
     void ChangePhase()
     {
         int actualPhase = (int)(timer * totalGamePhases / totalGameTime);
+        
         if (actualPhase > phase)
         {
             phase = actualPhase;
             Debug.Log(phase);
+            if (OnChangePhase != null)
+            {
+                OnChangePhase.Invoke(phase);
+            }
         }
+
+        
+
         if (phase == totalGamePhases)
         {
             victoria();
