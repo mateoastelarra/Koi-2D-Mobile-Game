@@ -1701,8 +1701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd8d4ec388005c459d52ae27e564b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 9
   speed: 10
+  progressBar: {fileID: 285172532}
 --- !u!70 &720887301
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3878,7 +3878,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c13316fef9877d4eb7505dab65c35c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
+  progressBar:
+  - {fileID: 285172532}
+  scrollingSpeedForEachPhase:
+  - 10
+  - 12
+  - 16
 --- !u!1 &1765680578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4376,8 +4381,8 @@ MonoBehaviour:
   - {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
   - {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
   xLeftBound: -1.17
-  xRightBound: 0
-  barra: {fileID: 285172532}
+  xRightBound: 1.5
+  progressBar: {fileID: 285172532}
 --- !u!4 &1897537766
 Transform:
   m_ObjectHideFlags: 0

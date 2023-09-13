@@ -8,7 +8,7 @@ public class SpawnObstaculos : MonoBehaviour
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private float xLeftBound;
     [SerializeField] private float xRightBound;
-    [SerializeField] private PezDeBarraDeProgreso barra;
+    [SerializeField] private PezDeBarraDeProgreso progressBar;
 
     private float timeBetweenSpawns;
     private int velocityPhase;
@@ -31,12 +31,12 @@ public class SpawnObstaculos : MonoBehaviour
 
     private void OnEnable()
     {
-        barra.OnChangePhase += ChangeSpawnTime;
+        progressBar.OnChangePhase += ChangeSpawnTime;
     }
 
     private void OnDisable()
     {
-        barra.OnChangePhase -= ChangeSpawnTime;
+        progressBar.OnChangePhase -= ChangeSpawnTime;
     }
 
     void ChangeSpawnTime(int phase)
