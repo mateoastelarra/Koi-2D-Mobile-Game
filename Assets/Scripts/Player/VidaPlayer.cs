@@ -1,14 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class VidaPlayer : MonoBehaviour
 {
     [SerializeField] private  int puntosDeVidaMaximos;
     [SerializeField] private  int puntosDeVida;
-    [SerializeField] private  Text textoUIvida;
 
     [Header("variables para effecto 'blink'")]
     private  SpriteRenderer spriteRenderer;

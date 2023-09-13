@@ -1754,7 +1754,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puntosDeVidaMaximos: 5
   puntosDeVida: 3
-  textoUIvida: {fileID: 0}
   MaterialBlink: {fileID: 2100000, guid: a51a3aebb43ac044989270407476b208, type: 3}
   timerBlink: 0
   tiempoInmune: 1
@@ -4380,7 +4379,7 @@ MonoBehaviour:
   - {fileID: 567200386630203239, guid: 3c4c58782a666d7448001c1d28424f8e, type: 3}
   - {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
   - {fileID: 995567497728582353, guid: e189b031519fdd844bf5d01698ec0405, type: 3}
-  xLeftBound: -1.17
+  xLeftBound: -1.5
   xRightBound: 1.5
   progressBar: {fileID: 285172532}
 --- !u!4 &1897537766
