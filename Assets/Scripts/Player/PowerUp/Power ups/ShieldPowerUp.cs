@@ -21,13 +21,12 @@ public class ShieldPowerUp : IPowerUp
 
         await Task.Delay(TimeSpan.FromSeconds(5));
 
-        shieldSprite.gameObject.SetActive(false);
+        if (shieldSprite != null)
+            shieldSprite.gameObject.SetActive(false);
 
         await Task.Delay(TimeSpan.FromSeconds(0.2f));
 
         vidaPlayer.HasShield = false;
         vidaPlayer.Immune = false;
-        
-
     }
 }

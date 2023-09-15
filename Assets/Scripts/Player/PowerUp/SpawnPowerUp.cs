@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnPowerUp : MonoBehaviour
@@ -49,6 +47,5 @@ public class SpawnPowerUp : MonoBehaviour
         GameObject nuevoPowerUp = Instantiate(chosenPowerUp, spawnPosition, Quaternion.identity);
     
         nuevoPowerUp.transform.SetParent(transform);
-
     }
 }
