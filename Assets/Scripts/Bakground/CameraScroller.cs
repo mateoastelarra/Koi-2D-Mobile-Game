@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class CameraScroller : MonoBehaviour
 {
-    public float scrollingSpeed = 1;
-    private void Start()
+    [SerializeField] PezDeBarraDeProgreso[] progressBar;
+    public float[] scrollingSpeedForEachPhase;
+    
+    private float scrollingSpeed;
+
+    public float ScrollingSpeed { get => scrollingSpeed;}
+
+    private void Awake()
     {
-        transform.position = new Vector3 (0, 0, -10);
+        scrollingSpeed = scrollingSpeedForEachPhase[0];
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        transform.position = new Vector3 (0, 0, -10);  
+    }
+
+    private void OnEnable()
+    {
+        if (progressBar[0] != null)
+            progressBar[0].OnChangePhase += ChangeScrollingSpeed;
+    }
+
+    private void OnDisable()
+    {
+        if (progressBar[0] != null)
+            progressBar[0].OnChangePhase -= ChangeScrollingSpeed;
+    }
+
+    void ChangeScrollingSpeed(int phase)
+    {
+        if (phase < scrollingSpeedForEachPhase.Length)
+            scrollingSpeed = scrollingSpeedForEachPhase[phase];   
+    }
+  
     void FixedUpdate()
     {
-        transform.Translate(0, scrollingSpeed * Time.deltaTime, 0);
+        transform.Translate(0, ScrollingSpeed * Time.deltaTime, 0);
     }
 }

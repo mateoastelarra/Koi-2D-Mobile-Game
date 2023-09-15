@@ -1,101 +1,121 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class VidaPlayer : MonoBehaviour
 {
-    [SerializeField] private  int puntosDeVidaMaximos;
-    [SerializeField] private  int puntosDeVida;
-    [SerializeField] private  Text textoUIvida;
+    [Header("Player lives")]
+    [SerializeField] private  int maxLives;
+    [SerializeField] private  int lives;
+    [SerializeField] private GameObject[] livesUI;
 
     [Header("variables para effecto 'blink'")]
-     private  SpriteRenderer spriteRenderer;
-     private Material originalMaterial;
+    [SerializeField] SpriteRenderer koiSpriteRenderer;
     [SerializeField] private Material MaterialBlink;
-    [SerializeField] private float timerBlink;
-    [SerializeField] private float tiempoInmune;
-    [SerializeField] private float tiempoEntreBlinks;
-    [SerializeField] private bool inmune;
+    [SerializeField] private float timeImmune;
+    [SerializeField] private float timeBetweenBlinks;
+    [SerializeField] private bool immune;
     [SerializeField] private bool hasShield;
 
-    [Header("Imagenes de vida de koi")]
-    [SerializeField] private GameObject vida1;
-    [SerializeField] private GameObject vida2;
-    [SerializeField] private GameObject vida3;
-    [SerializeField] private GameObject vida4;
-    [SerializeField] private GameObject vida5;
-    
+    private float timerBlink;
+    private Material originalMaterial;
 
-    public int PuntosDeVida { get => puntosDeVida; set => puntosDeVida = value; }
-    public bool Inmune { get => inmune; set => inmune = value; }
+    public int Lives { get => lives; set => lives = value; }
+    public bool Immune { get => immune; set => immune = value; }
     public bool HasShield { get => hasShield; set => hasShield = value; }
+    public int MaxLives { get => maxLives;}
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        originalMaterial = spriteRenderer.material;
+        originalMaterial = koiSpriteRenderer.material;
+
+        timerBlink = 0;
+
+        UpdateLivesImages();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        if(puntosDeVida > puntosDeVidaMaximos)
-        {
-            puntosDeVida = puntosDeVidaMaximos;
-        }
         timerBlink += Time.deltaTime;
        
         Blink();
-         
-        AtualizarImagenDeVida();
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        
+    { 
         if (other.CompareTag("Obstaculo"))
         {
-            if (Inmune == false)
-            {
-                //es el timer para el blink
-                //timer = 0;
-                StartCoroutine(BeInmune());
-                SFXManager.GetInstance().PlayCrashSound(gameObject);
-                PuntosDeVida -=1;
+            TakeDamage();
+        }
+    }
 
-                if (PuntosDeVida == 0)
-                {
-                    //ReiniciarEscena();
-                    StartCoroutine("VolverAlMenuPrincipal");
-                }
+    private void TakeDamage()
+    {
+        if (Immune == false)
+        {
+            StartCoroutine(BeInmune());
+            SFXManager.GetInstance().PlayCrashSound(gameObject);
+            Lives -= 1;
+            UpdateLivesImages();
+
+            if (Lives == 0)
+            {
+                StartCoroutine("GoToMainMenu");
             }
-        } 
+        }
+    }
+
+    public IEnumerator GoToMainMenu()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+
+        yield return new WaitForSeconds(1);
+
+        SFXManager.GetInstance().PlayDrumSound(gameObject);
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(0);
+    }
+
+    private IEnumerator BeInmune()
+    {
+        immune = true;
+
+        yield return new WaitForSeconds(timeImmune);
+
+        if (!HasShield)
+        {
+            immune = false;
+        }
 
     }
 
+    public void UpdateLivesImages()
+    {
+        for (int i = 0; i < maxLives; i++)
+        {
+            livesUI[i].SetActive(i < lives);
+        }
+    }
 
-      private void Blink()
+    private void Blink()
     {
         
-
-        if (Inmune)
+        if (Immune)
         {
-            if (timerBlink >= tiempoEntreBlinks)
+            if (timerBlink >= timeBetweenBlinks)
             {
-                if (spriteRenderer.material == originalMaterial)
+                if (koiSpriteRenderer.material == originalMaterial)
                 {
-                    spriteRenderer.material = MaterialBlink;
+                    koiSpriteRenderer.material = MaterialBlink;
                 }
                 else
                 {
-                    spriteRenderer.material = originalMaterial;
+                    koiSpriteRenderer.material = originalMaterial;
                 }
 
                 timerBlink = 0;
@@ -107,111 +127,8 @@ public class VidaPlayer : MonoBehaviour
         }
         else
         {
-            spriteRenderer.material = originalMaterial;
+            koiSpriteRenderer.material = originalMaterial;
         }
     }
 
-    public void ReiniciarEscena()
-    {
-        Debug.Log("reinciar");
-        // Obtenemos el nombre de la escena actual
-        string nombreEscenaActual = SceneManager.GetActiveScene().name;
-
-        // Cargamos la misma escena para reiniciarla
-        SceneManager.LoadScene(nombreEscenaActual);
-    
-    }
-
-    public IEnumerator VolverAlMenuPrincipal()
-    {
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GetComponent<PlayerMovement>().enabled = false;
-        GetComponent<CapsuleCollider2D>().enabled = false;
-        yield return new WaitForSeconds(1);
-        SFXManager.GetInstance().PlayDrumSound(gameObject);
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(0);
-    }
-
-    private IEnumerator BeInmune()
-    {
-        inmune = true;
-
-        yield return new WaitForSeconds(tiempoInmune);
-        
-        if (!HasShield)
-        {
-            inmune = false;
-        }
-        
-    }
-
-    public void AtualizarImagenDeVida()
-    {
-        switch (PuntosDeVida)
-        {
-        case 0:
-            vida1.SetActive(false); 
-            vida2.SetActive(false); 
-            vida3.SetActive(false); 
-            vida4.SetActive(false); 
-            vida5.SetActive(false); 
-
-            break;
-
-        case 1:
-            vida1.SetActive(true); 
-            vida2.SetActive(false); 
-            vida3.SetActive(false); 
-            vida4.SetActive(false); 
-            vida5.SetActive(false); 
-
-            break;
-
-           
-        case 2:
-            vida1.SetActive(true); 
-            vida2.SetActive(true); 
-            vida3.SetActive(false); 
-            vida4.SetActive(false); 
-            vida5.SetActive(false); 
-
-            break;
-
-           
-        case 3:
-            vida1.SetActive(true); 
-            vida2.SetActive(true); 
-            vida3.SetActive(true); 
-            vida4.SetActive(false); 
-            vida5.SetActive(false); 
-
-            break;
-
-           
-         case 4:
-            vida1.SetActive(true); 
-            vida2.SetActive(true); 
-            vida3.SetActive(true); 
-            vida4.SetActive(true); 
-            vida5.SetActive(false); 
-
-            break;
-
-           
-        case 5:
-            vida1.SetActive(true); 
-            vida2.SetActive(true); 
-            vida3.SetActive(true); 
-            vida4.SetActive(true); 
-            vida5.SetActive(true); 
-
-            break;
-
-
-        }
-
-    }
-
-    
 }
