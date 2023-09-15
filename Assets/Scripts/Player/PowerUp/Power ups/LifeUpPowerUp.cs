@@ -7,11 +7,11 @@ public class LifeUpPowerUp : IPowerUp
     public void Use(GameObject currentGameObject)
     {
         VidaPlayer vidaPlayer = currentGameObject.GetComponent<VidaPlayer>();
-        int vidas = vidaPlayer.PuntosDeVida;
+        int vidas = vidaPlayer.Lives;
 
-        if (vidas < vidaPlayer.PuntosDeVidaMaximos)
+        if (vidas < vidaPlayer.MaxLives)
         {
-            vidaPlayer.PuntosDeVida = vidas + 1;
+            vidaPlayer.Lives = vidas + 1;
             vidaPlayer.UpdateLivesImages();
         }
 

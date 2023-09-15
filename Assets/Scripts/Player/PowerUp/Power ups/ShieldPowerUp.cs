@@ -14,7 +14,7 @@ public class ShieldPowerUp : IPowerUp
         Transform shieldSprite = gameObject.transform.Find("ShieldSprite");
         VidaPlayer vidaPlayer = gameObject.GetComponent<VidaPlayer>();
 
-        vidaPlayer.Inmune = true;
+        vidaPlayer.Immune = true;
         vidaPlayer.HasShield = true;
         shieldSprite.gameObject.SetActive(true);
         SFXManager.GetInstance().PlayShieldSound(gameObject);
@@ -26,7 +26,7 @@ public class ShieldPowerUp : IPowerUp
         await Task.Delay(TimeSpan.FromSeconds(0.2f));
 
         vidaPlayer.HasShield = false;
-        vidaPlayer.Inmune = false;
+        vidaPlayer.Immune = false;
         
 
     }

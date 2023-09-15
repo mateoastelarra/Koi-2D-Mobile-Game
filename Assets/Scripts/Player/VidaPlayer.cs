@@ -4,31 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class VidaPlayer : MonoBehaviour
 {
-    [SerializeField] private  int puntosDeVidaMaximos;
-    [SerializeField] private  int puntosDeVida;
+    [Header("Player lives")]
+    [SerializeField] private  int maxLives;
+    [SerializeField] private  int lives;
+    [SerializeField] private GameObject[] livesUI;
 
     [Header("variables para effecto 'blink'")]
-    private  SpriteRenderer spriteRenderer;
-    private Material originalMaterial;
+    [SerializeField] SpriteRenderer koiSpriteRenderer;
     [SerializeField] private Material MaterialBlink;
-    [SerializeField] private float timerBlink;
-    [SerializeField] private float tiempoInmune;
-    [SerializeField] private float tiempoEntreBlinks;
-    [SerializeField] private bool inmune;
+    [SerializeField] private float timeImmune;
+    [SerializeField] private float timeBetweenBlinks;
+    [SerializeField] private bool immune;
     [SerializeField] private bool hasShield;
 
-    [Header("Imagenes de vida de koi")]
-    [SerializeField] private GameObject[] lives;
+    private float timerBlink;
+    private Material originalMaterial;
 
-    public int PuntosDeVida { get => puntosDeVida; set => puntosDeVida = value; }
-    public bool Inmune { get => inmune; set => inmune = value; }
+    public int Lives { get => lives; set => lives = value; }
+    public bool Immune { get => immune; set => immune = value; }
     public bool HasShield { get => hasShield; set => hasShield = value; }
-    public int PuntosDeVidaMaximos { get => puntosDeVidaMaximos;}
+    public int MaxLives { get => maxLives;}
 
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        originalMaterial = spriteRenderer.material;
+        originalMaterial = koiSpriteRenderer.material;
+        timerBlink = 0;
         UpdateLivesImages();
     }
 
@@ -50,21 +50,21 @@ public class VidaPlayer : MonoBehaviour
 
     private void TakeDamage()
     {
-        if (Inmune == false)
+        if (Immune == false)
         {
             StartCoroutine(BeInmune());
             SFXManager.GetInstance().PlayCrashSound(gameObject);
-            PuntosDeVida -= 1;
+            Lives -= 1;
             UpdateLivesImages();
 
-            if (PuntosDeVida == 0)
+            if (Lives == 0)
             {
-                StartCoroutine("VolverAlMenuPrincipal");
+                StartCoroutine("GoToMainMenu");
             }
         }
     }
 
-    public IEnumerator VolverAlMenuPrincipal()
+    public IEnumerator GoToMainMenu()
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<PlayerMovement>().enabled = false;
@@ -81,39 +81,39 @@ public class VidaPlayer : MonoBehaviour
 
     private IEnumerator BeInmune()
     {
-        inmune = true;
+        immune = true;
 
-        yield return new WaitForSeconds(tiempoInmune);
+        yield return new WaitForSeconds(timeImmune);
 
         if (!HasShield)
         {
-            inmune = false;
+            immune = false;
         }
 
     }
 
     public void UpdateLivesImages()
     {
-        for (int i = 0; i < puntosDeVidaMaximos; i++)
+        for (int i = 0; i < maxLives; i++)
         {
-            lives[i].SetActive(i < puntosDeVida);
+            livesUI[i].SetActive(i < lives);
         }
     }
 
     private void Blink()
     {
         
-        if (Inmune)
+        if (Immune)
         {
-            if (timerBlink >= tiempoEntreBlinks)
+            if (timerBlink >= timeBetweenBlinks)
             {
-                if (spriteRenderer.material == originalMaterial)
+                if (koiSpriteRenderer.material == originalMaterial)
                 {
-                    spriteRenderer.material = MaterialBlink;
+                    koiSpriteRenderer.material = MaterialBlink;
                 }
                 else
                 {
-                    spriteRenderer.material = originalMaterial;
+                    koiSpriteRenderer.material = originalMaterial;
                 }
 
                 timerBlink = 0;
@@ -125,7 +125,7 @@ public class VidaPlayer : MonoBehaviour
         }
         else
         {
-            spriteRenderer.material = originalMaterial;
+            koiSpriteRenderer.material = originalMaterial;
         }
     }
 

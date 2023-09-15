@@ -41,7 +41,6 @@ public class SpawnPowerUp : MonoBehaviour
   
     void Update()
     {
-        // Actualizar la posición del eje Y de la cámara
         camYPosition = camTransform.position.y;
 
 
@@ -73,12 +72,9 @@ public class SpawnPowerUp : MonoBehaviour
            
         }
 
-
-        //Instanciar
-
-         GameObject nuevoPowerUp = Instantiate(powerUpElegido, spawnPosition, Quaternion.identity);
+        GameObject nuevoPowerUp = Instantiate(powerUpElegido, spawnPosition, Quaternion.identity);
     
-        // Establecer el objeto padre
+        
         nuevoPowerUp.transform.SetParent(transform);
 
     }

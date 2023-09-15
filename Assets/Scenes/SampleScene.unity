@@ -1752,20 +1752,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca4c0443998b1847a7a931aa540d762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntosDeVidaMaximos: 5
-  puntosDeVida: 3
-  MaterialBlink: {fileID: 2100000, guid: a51a3aebb43ac044989270407476b208, type: 3}
-  timerBlink: 0
-  tiempoInmune: 1
-  tiempoEntreBlinks: 0.1
-  inmune: 0
-  hasShield: 0
-  lives:
+  maxLives: 5
+  lives: 3
+  livesUI:
   - {fileID: 224205809}
   - {fileID: 1142018838}
   - {fileID: 1958368024}
   - {fileID: 608507442}
   - {fileID: 686523162}
+  koiSpriteRenderer: {fileID: 108839439}
+  MaterialBlink: {fileID: 2100000, guid: a51a3aebb43ac044989270407476b208, type: 3}
+  timeImmune: 1
+  timeBetweenBlinks: 0.1
+  immune: 0
+  hasShield: 0
 --- !u!114 &720887304
 MonoBehaviour:
   m_ObjectHideFlags: 0
