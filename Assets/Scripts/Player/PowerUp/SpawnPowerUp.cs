@@ -4,77 +4,50 @@ using UnityEngine;
 
 public class SpawnPowerUp : MonoBehaviour
 {
-    [Header("Tiempo Para Spawnear")]
+    [Header("Spawning Time")]
 
-    [SerializeField] private  float TiempoParaSpawnMin ;//, limiteYArrBrocoli,LimiteYabajoBrocoli,poisicionXBrocoli,limiteXizqFrutilla,limiteXderFrutilla,posicionYfutilla;
-    [SerializeField] private  float TiempoParaSpawnMax;
-   
-    [Header("GameObjets de powerup(Prefabs)")]
+    [SerializeField] private  float minSpawnTime ;
+    [SerializeField] private  float maxSpawnTime;
 
-    [SerializeField] private  GameObject vidaExtra;
-    [SerializeField] private  GameObject Escudito;
+    [SerializeField] private GameObject[] powerUps;
     
+    [Header("Positions")]
 
-    [Header("Posiciones")]
+    [SerializeField] private  float leftXBound;
+    [SerializeField] private  float rightXBound;
 
-    [SerializeField] private  float posicionYparaPowerUp;
-    [SerializeField] private  float limiteXizquierdo;
-    [SerializeField] private  float limiteXderecho;
-
-
-    private  Vector2 spawnPosition;
-    private  GameObject powerUpElegido;
-    private  float tiempoPasado;
-    private  float TiempoParaSpawn;
-
-    private Transform camTransform;
-    private float camYPosition;
-    private int numAnt;
-    public int randomNumParaPiedra;
+    private  float elapsedTime;
+    private  float timeToSpawn;
+    
     void Start()
-    {
-        // Obtener el transform de la cámara
-        camTransform = Camera.main.transform;
-
-        TiempoParaSpawn = Random.Range(TiempoParaSpawnMin, TiempoParaSpawnMax);
+    { 
+        timeToSpawn = Random.Range(minSpawnTime, maxSpawnTime);
     }
   
     void Update()
     {
-        camYPosition = camTransform.position.y;
+        elapsedTime += Time.deltaTime;
 
-
-        tiempoPasado += Time.deltaTime;
-        if (tiempoPasado > TiempoParaSpawn)
+        if (elapsedTime > timeToSpawn)
         {
-            Spawnear();
-            TiempoParaSpawn = Random.Range(TiempoParaSpawnMin, TiempoParaSpawnMax);
+            Spawn();
+            timeToSpawn = Random.Range(minSpawnTime, maxSpawnTime);
 
         }
     }
-    public void Spawnear()
-    {
-        tiempoPasado = 0;
-  
-         randomNumParaPiedra = Random.Range(1, 3); // aca va (1, numero de cantidad de powerups +1)
-     
-        switch (randomNumParaPiedra)
-        {
-           
-            case 1:
-                powerUpElegido = vidaExtra.gameObject;
-                spawnPosition = new Vector2( Random.Range(limiteXizquierdo, limiteXderecho),posicionYparaPowerUp + camYPosition);
-                break;
-            case 2:
-                powerUpElegido = Escudito.gameObject;
-                spawnPosition = new Vector2( Random.Range(limiteXizquierdo, limiteXderecho),posicionYparaPowerUp + camYPosition);
-                break;
-           
-        }
 
-        GameObject nuevoPowerUp = Instantiate(powerUpElegido, spawnPosition, Quaternion.identity);
+    void Spawn()
+    {
+        elapsedTime = 0;
+
+        int randomNumberToChoosePowerUp = Random.Range(0, powerUps.Length);
+
+        GameObject chosenPowerUp = powerUps[randomNumberToChoosePowerUp];
+
+        Vector2 spawnPosition = new Vector2( Random.Range(leftXBound, rightXBound), transform.position.y); 
+
+        GameObject nuevoPowerUp = Instantiate(chosenPowerUp, spawnPosition, Quaternion.identity);
     
-        
         nuevoPowerUp.transform.SetParent(transform);
 
     }

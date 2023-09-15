@@ -28,7 +28,9 @@ public class VidaPlayer : MonoBehaviour
     void Start()
     {
         originalMaterial = koiSpriteRenderer.material;
+
         timerBlink = 0;
+
         UpdateLivesImages();
     }
 

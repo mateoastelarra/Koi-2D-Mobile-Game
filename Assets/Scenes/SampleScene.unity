@@ -3718,7 +3718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622908840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 6, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1687258585}
@@ -3736,14 +3736,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c265f3210188283409cc7d72b6e63706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiempoParaSpawnMin: 10
-  TiempoParaSpawnMax: 18
-  vidaExtra: {fileID: 4320165393551928423, guid: ff445435636eadf4fa08c7cbb426ad10, type: 3}
-  Escudito: {fileID: 3175996102826330475, guid: 43a75bab350708b4ca782b494b368635, type: 3}
-  posicionYparaPowerUp: 6
-  limiteXizquierdo: -1.17
-  limiteXderecho: 1.5
-  randomNumParaPiedra: 0
+  minSpawnTime: 10
+  maxSpawnTime: 18
+  powerUps:
+  - {fileID: 4320165393551928423, guid: ff445435636eadf4fa08c7cbb426ad10, type: 3}
+  - {fileID: 3175996102826330475, guid: 43a75bab350708b4ca782b494b368635, type: 3}
+  leftXBound: -1.5
+  rightXBound: 1.5
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
